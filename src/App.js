@@ -1,9 +1,11 @@
 import { Heading } from "./components/Heading"
+import 'bulma/css/bulma.min.css'
 
 function App() {
   return (
     <div className="App">
-      <Heading headingString="test heading"></Heading>
+      {/* for testing */}
+      <Heading headingString="Test Heading"></Heading>
     </div>
   );
 }
