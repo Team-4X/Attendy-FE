@@ -1,6 +1,6 @@
 // This assumes a value called headingString is given to this component
 // In this component we get that value and put it into a h1 tag.
-// TODO: style with tailwind css
+// TODO: style with bulma css
 
 
 import { useState } from "react"
