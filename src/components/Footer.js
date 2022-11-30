@@ -1,11 +1,11 @@
 import "./social-container.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faYoutube,
-  faFacebook,
-  faTwitter,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
+// import {
+//   faYoutube,
+//   faFacebook,
+//   faTwitter,
+//   faInstagram,
+// } from "@fortawesome/free-brands-svg-icons";
 export const Footer = () => {
   return (
     <footer class="footer has-background-grey-light">
@@ -124,25 +124,25 @@ export const Footer = () => {
           href="https://www.youtube.com/c/jamesqquick"
           className="youtube social"
         >
-          <FontAwesomeIcon icon={faYoutube} size="2x" />
+          {/* <FontAwesomeIcon icon={faYoutube} size="2x" /> */}
         </a>
         <a
           href="https://www.facebook.com/learnbuildteach/"
           className="facebook social"
         >
-          <FontAwesomeIcon icon={faFacebook} size="2x" />
+          {/* <FontAwesomeIcon icon={faFacebook} size="2x" /> */}
         </a>
         <a
           href="https://www.twitter.com/jamesqquick"
           className="twitter social"
         >
-          <FontAwesomeIcon icon={faTwitter} size="2x" />
+          {/* <FontAwesomeIcon icon={faTwitter} size="2x" /> */}
         </a>
         <a
           href="https://www.instagram.com/learnbuildteach"
           className="instagram social"
         >
-          <FontAwesomeIcon icon={faInstagram} size="2x" />
+          {/* <FontAwesomeIcon icon={faInstagram} size="2x" /> */}
         </a>
       </div>
       <div class="column is-fulls has-background-black">
