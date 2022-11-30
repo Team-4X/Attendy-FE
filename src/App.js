@@ -3,7 +3,9 @@ import { Card } from "./components/Card";
 import { Footer } from "./components/Footer";
 import { SideBar } from "./components/SideBar";
 
-import img1 from "./assets/image-placeholder.webp"
+import studentImg from "./assets/student.jpg";
+import staffImg from "./assets/staff.jpg";
+import workingImg from "./assets/working-together.jpg";
 
 import "bulma/css/bulma.min.css";
 
@@ -14,8 +16,8 @@ function App() {
 
       <div className="columns">
         <div className="column mt-2 ml-5">
-          <Heading headingString="heading is here"></Heading>
           <h2 className="title is-2 has-text-success">Navbar here</h2>
+          <Heading headingString="heading is here"></Heading>
           <hr></hr>
         </div>
       </div>
@@ -25,23 +27,31 @@ function App() {
           <SideBar></SideBar>
         </div>
         <div className="column">
-          
           {/* cards should be here */}
 
           <div className="columns mr-1">
-            <div className="columns">
-              <Card title="Students" attendanceCount="300" image={img1}></Card>
+            <div className="column">
+              <Card
+                title="Students"
+                attendanceCount="300"
+                image={workingImg}
+              ></Card>
             </div>
-            <div className="columns">
-              <Card title="Staff Members" attendanceCount="20" image={img1}></Card>
+            <div className="column">
+              <Card
+                title="Staff Members"
+                attendanceCount="20"
+                image={staffImg}
+              ></Card>
             </div>
           </div>
+
           <div className="columns mr-1">
-            <div className="columns">
-              <Card image={img1} title="testTitle"></Card>
+            <div className="column">
+              <Card image={workingImg} title="testTitle" attendanceCount="200"></Card>
             </div>
-            <div className="columns">
-              <Card image={img1} title="testTitle"></Card>
+            <div className="column">
+              <Card image={staffImg} title="testTitle" attendanceCount="33"></Card>
             </div>
           </div>
         </div>
