@@ -12,11 +12,9 @@ import "bulma/css/bulma.min.css";
                 Home
              </a>
             <a class="navbar-item">
-                About
+                About us
             </a>
-            <a class="navbar-item">
-                Us
-            </a>
+           
 
             
         <div class="navbar-item has-dropdown is-hoverable">
@@ -38,26 +36,7 @@ import "bulma/css/bulma.min.css";
        
    
          <div class="navbar-end">
-         <div class="navbar-item">
-         <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-                Languages
-            </a>
-
-         <div class="navbar-dropdown">
-         
-            <a class="navbar-item ">
-                English
-            </a>
-            <a class="navbar-item">
-                Sinhala
-            </a>
-            <a class="navbar-item">
-                Tamil
-            </a>
-          </div>
-      </div>
-        <div class="buttons">
+         <div class="buttons">
           <a class="button is-white">
             <strong>Sign up</strong>
           </a>
@@ -68,7 +47,6 @@ import "bulma/css/bulma.min.css";
       </div>
     </div>
    
-  </div>
  
  </nav>
 
