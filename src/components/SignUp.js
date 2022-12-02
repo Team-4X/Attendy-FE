@@ -8,11 +8,12 @@ export const SignUp = () => {
         <h1 className="title is-1">WELCOME ATTENDY</h1>
         <h2 className="title is-1">Let's get you started!</h2>  
 
-       <form>
-        <div class="field">
-            <label class="label">First Name</label>
-            <div class="control">
-                <input class="input" type="text" placeholder="Text input"/>
+        <div class="columns">
+            <div class="column is-half">
+                <label class="label">First Name</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Text input"/>
+                </div>    
             </div>
         </div>
 
@@ -67,7 +68,6 @@ export const SignUp = () => {
             </div>
         </div>
 
-       </form>
       </div>  
     )
 }
