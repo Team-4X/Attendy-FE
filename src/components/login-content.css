@@ -1,0 +1,14 @@
+.image-size{
+    width:50;
+    height:25;
+
+
+}
+input[type=text],input[type=password]{
+    width: 350px;
+
+}
+button{
+    background-color: black;
+    width: 350px;
+}
