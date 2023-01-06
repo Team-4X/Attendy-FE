@@ -1,5 +1,6 @@
 import { NavBar } from "./NavBar";
 import { Footer } from "./Footer";
+import { Link } from "react-router-dom";
 
 import "./ContactUs.css";
 import image from "../assets/staff.jpg";

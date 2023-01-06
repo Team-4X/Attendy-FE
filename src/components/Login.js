@@ -1,4 +1,5 @@
 import "./login-content.css";
+import { Link } from "react-router-dom";
 export const Login = () => {
   return (
     <div class="container mt-5 is-max-desktop">
@@ -31,7 +32,9 @@ export const Login = () => {
             <button class="button is-dark">Login</button>
             <br></br>
             <span>
-              <a href="#">Create an account?</a>
+              <a href="#">
+                <Link to={"/register"}>Create an account?</Link>
+              </a>
             </span>
           </div>
         </div>
