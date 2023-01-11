@@ -22,6 +22,11 @@ export const StaffManage = () => {
             <input class="input" type="text" placeholder="Subject" />
           </div>
         </div>
+        <div class="column mr-4 ml-4">
+          <div class="control">
+            <input class="input" type="text" placeholder="Date" />
+          </div>
+        </div>
       </div>
 
       <div class="columns">
