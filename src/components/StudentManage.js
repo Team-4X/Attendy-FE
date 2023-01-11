@@ -1,5 +1,6 @@
 import { NavBar } from "./NavBar"
 import { Footer } from "./Footer";
+import { Link } from "react-router-dom";
 
 import "bulma/css/bulma.min.css";
 
@@ -50,4 +51,3 @@ export const StudentManage = () => {
         </div>
     )
 }
-

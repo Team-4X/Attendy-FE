@@ -1,5 +1,6 @@
 import "bulma/css/bulma.min.css";
 import { Link } from "react-router-dom";
+
 export const NavBar = () => {
   return (
     <nav class="navbar is-dark is fixed-top">

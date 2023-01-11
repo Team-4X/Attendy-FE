@@ -37,6 +37,7 @@ export const Home = () => {
                 title="Students"
                 attendanceCount="300"
                 image={workingImg}
+                link="student"
               ></Card>
             </div>
             <div className="column">
@@ -44,6 +45,7 @@ export const Home = () => {
                 title="Staff Members"
                 attendanceCount="20"
                 image={staffImg}
+                link="staff"
               ></Card>
             </div>
           </div>
@@ -52,15 +54,17 @@ export const Home = () => {
             <div className="column">
               <Card
                 image={workingImg}
-                title="testTitle"
+                title="Manage Staff"
                 attendanceCount="200"
+                link="staff-manage"
               ></Card>
             </div>
             <div className="column">
               <Card
                 image={staffImg}
-                title="testTitle"
+                title="Manage Student"
                 attendanceCount="33"
+                link="student-manage"
               ></Card>
             </div>
           </div>

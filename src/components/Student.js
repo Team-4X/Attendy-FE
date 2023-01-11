@@ -3,16 +3,16 @@ import { Footer } from "./Footer";
 import { Link } from "react-router-dom";
 
 import "bulma/css/bulma.min.css";
-export const Staff = () => {
+export const Student = () => {
   return (
     <div>
       <NavBar></NavBar>
-      <h1 class="subtitle is-2 has-text-centered mt-5">Attendance of Teachers</h1>
+      <h1 class="subtitle is-2 has-text-centered mt-5">Attendance of Students</h1>
 
       <div class="columns mt-4 is-centered">
         <div class="column mr-4 ml-4">
           <div class="control">
-            <input class="input" type="text" placeholder="Subject" />
+            <input class="input" type="text" placeholder="Student Name" />
           </div>
         </div>
 
@@ -46,4 +46,3 @@ export const Staff = () => {
 
   );
 };
-
