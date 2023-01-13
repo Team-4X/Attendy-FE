@@ -1,5 +1,7 @@
 import "./login-content.css";
 import { Link } from "react-router-dom";
+import image from "../assets/working-together.jpg";
+
 export const Login = () => {
   return (
     <div class="container mt-5 is-max-desktop">
@@ -11,7 +13,8 @@ export const Login = () => {
 
           <div class="has-text-centered">
             <img
-              src="3255337.jpg"
+              // src="3255337.jpg"
+              src={image}
               alt="login"
               className="image-size"
               width="350px"
@@ -33,7 +36,7 @@ export const Login = () => {
             <br></br>
             <span>
               <a href="#">
-                <Link to={"/register"}>Create an account?</Link>
+                <Link to={"/auth/register"}>Create an account?</Link>
               </a>
             </span>
           </div>

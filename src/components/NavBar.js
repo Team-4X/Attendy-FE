@@ -30,11 +30,11 @@ export const NavBar = () => {
           <div class="buttons">
             <a class="button is-white">
               <strong>
-                <Link to={"/register"}>Sign up</Link>
+                <Link to={"/auth/register"}>Sign up</Link>
               </strong>
             </a>
             <a class="button is-dark">
-              <Link to={"/login"}>Log in</Link>
+              <Link to={"/auth/login"}>Log in</Link>
             </a>
           </div>
         </div>
