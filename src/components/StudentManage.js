@@ -1,6 +1,5 @@
 import { NavBar } from "./NavBar"
 import { Footer } from "./Footer";
-import { Link } from "react-router-dom";
 
 import "bulma/css/bulma.min.css";
 
@@ -14,17 +13,17 @@ export const StudentManage = () => {
             <div class="columns mt-4 is-centered">
                 <div class="column mr-4 ml-4">
                     <div class="control">
-                        <input class="input" type="text" placeholder="Grade" />
+                        <input class="input" type="text" placeholder="Full Name" name="name" />
                     </div>
                 </div>
                 <div class="column mr-4 ml-4">
                     <div class="control">
-                        <input class="input" type="text" placeholder="Class" />
+                        <input class="input" type="text" placeholder="Class" name="class"/>
                     </div>
                 </div>
                 <div class="column mr-4 ml-4">
                     <div class="control">
-                        <input class="input" type="text" placeholder="Date" />
+                        <input class="input" type="text" placeholder="Index Number" name="index" />
                     </div>
                 </div>
             </div>

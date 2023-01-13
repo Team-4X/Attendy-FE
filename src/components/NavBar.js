@@ -1,4 +1,5 @@
 import "bulma/css/bulma.min.css";
+import "./assets/navbar.css";
 import { Link } from "react-router-dom";
 
 export const NavBar = () => {
@@ -6,7 +7,7 @@ export const NavBar = () => {
     <nav class="navbar is-dark is fixed-top">
       <div id="navbar" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
+          <a className="navbar-item">
             <Link to={"/"}>Home</Link>
           </a>
           <a class="navbar-item">
@@ -18,7 +19,7 @@ export const NavBar = () => {
 
             <div class="navbar-dropdown">
               <a class="navbar-item">
-                <Link to={"/contact"}>Contact</Link>
+                <Link to={"/contact"}><span id="contact-btn">Contact Us</span></Link>
               </a>
               <hr class="navbar-divider" />
               <a class="navbar-item">Logout</a>
@@ -30,7 +31,7 @@ export const NavBar = () => {
           <div class="buttons">
             <a class="button is-white">
               <strong>
-                <Link to={"/auth/register"}>Sign up</Link>
+                <Link to={"/auth/register"}><span id="signup-button">Sign up</span></Link>
               </strong>
             </a>
             <a class="button is-dark">
