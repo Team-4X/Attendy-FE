@@ -1,4 +1,3 @@
-import { Heading } from "./components/Heading";
 import { Login } from "./components/Login";
 import { SignUp } from "./components/SignUp";
 import { Home } from "./components/Home";
@@ -8,6 +7,7 @@ import { Student } from "./components/Student";
 import { StudentManage } from "./components/StudentManage";
 import { Staff } from "./components/Staff";
 import { StaffManage } from "./components/StaffManage";
+import { MarkAttendance } from "./components/MarkAttendance";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -28,6 +28,7 @@ function App() {
           <Route path="/student-manage" element={<StudentManage></StudentManage>}></Route>
           <Route path="/staff-manage" element={<StaffManage></StaffManage>}></Route>
           <Route path="/staff" element={<Staff></Staff>}></Route>
+          <Route path="/mark-attendance" element={<MarkAttendance></MarkAttendance>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
