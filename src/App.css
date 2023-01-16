@@ -27,6 +27,17 @@
 .App-link {
   color: #61dafb;
 }
+.userId{
+  margin-top: 5px;  
+  margin-bottom: 5px;
+  cursor: pointer;
+  padding:5px;
+}
+.userId:hover{
+  background-color: #D9E3F0;
+
+}
+
 
 @keyframes App-logo-spin {
   from {
