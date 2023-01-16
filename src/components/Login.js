@@ -2,10 +2,13 @@ import "./login-content.css";
 import { Link } from "react-router-dom";
 import image from "../assets/working-together.jpg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
     const [data, setData] = useState();
     const [name, setName] = useState();
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,6 +22,12 @@ export const Login = () => {
                 setName(json[0].name);
             });
     }
+
+    const handleCancel = () => {
+        navigate('/');
+    }
+
+
     // const handleSubmit = async (e) => {
     //   e.preventDefault();
     //   const data = new FormData(e.currentTarget);
@@ -71,11 +80,13 @@ export const Login = () => {
                                 name="password"
                             ></input>
                             <br></br>
-                            <button class="button is-dark">Login</button>
+                            <button type="submit" class="button is-dark">Login</button>
+                            <br></br>
+                            <button type="button" class="button is-link my-2" onClick={handleCancel}>Cancel</button>
                             <br></br>
                             <span>
-                                <a href="#">
-                                    <Link to={"/auth/register"}>Create an account?</Link>
+                                <a href="#" className="has-text-dark">
+                                    <Link to={"/auth/register"}><span className="has-text-grey">Create an account?</span></Link>
                                 </a>
                             </span>
                         </form>
