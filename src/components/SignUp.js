@@ -6,14 +6,7 @@ import { useNavigate } from "react-router-dom";
 // import { useState } from "react";
 
 export const SignUp = () => {
-  // const [form, setForm] = useState({
-  //   firstName: '',
-  //   lastName: '',
-  //   userID: '',
-  //   email: '',
-  //   password: '' 
-  // })
-  //
+
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -32,16 +25,15 @@ export const SignUp = () => {
         "content-type": "application/json",
       },
     });
-    console.log(res);
+    
+    if (res.ok) {
+      navigate('/'); 
+    }
   }
 
   const handleCancel = () => {
     navigate('/');
   }
-
-  // const handleInput = (e) => {
-  //   setForm({ ...form, [e.target.name]: e.target.value });
-  // }
 
   return (
     <div class="container mt-5 is-max-desktop">

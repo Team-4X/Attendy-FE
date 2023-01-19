@@ -1,4 +1,7 @@
 import React from "react";
+import Cookies from 'js-cookie';
+import { useEffect, useState } from "react";
+
 import { Card } from "./Card";
 import { Footer } from "./Footer";
 import { SideBar } from "./SideBar";
@@ -10,7 +13,19 @@ import studentImg from "../assets/student.jpg";
 import staffImg from "../assets/staff.jpg";
 import workingImg from "../assets/working-together.jpg";
 
+
+
 export const Home = () => {
+
+  useEffect(() => {
+    getToken();
+  }, []);
+
+  const [token, setToken] = useState('null');
+
+  const getToken = () => {
+    setToken(Cookies.get('token'));
+  }
   return (
     <>
       <NavBar></NavBar>

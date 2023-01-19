@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import image from "../assets/working-together.jpg";
 // import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 export const Login = () => {
   // const [data, setData] = useState();
@@ -34,7 +35,7 @@ export const Login = () => {
       username: data.get("userID"),
       password: data.get("password"),
     };
-    console.log(form);
+
     const res = await fetch("http://localhost:4000/auth/login", {
       method: "POST",
       body: JSON.stringify(form),
@@ -42,8 +43,13 @@ export const Login = () => {
         "content-type": "application/json",
       },
     });
-    console.log("runs login post");
-    console.log(res);
+
+    const {token} = await res.json();
+
+    if(res.ok) {
+      Cookies.set('token', token);
+      navigate('/');
+    }
   };
 
   return (
