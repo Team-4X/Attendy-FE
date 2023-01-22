@@ -18,7 +18,7 @@ export const SignUp = () => {
       email: data.get('email'),
       password: data.get('password')
     };
-    const res = await fetch('http://localhost:4000/auth/register', {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
       method: "POST",
       body: JSON.stringify(form),
       headers: {

@@ -1,4 +1,5 @@
 import { NavBar } from "./NavBar";
+import { Footer } from "./Footer";
 
 export const About = () => {
   return (
@@ -35,6 +36,7 @@ export const About = () => {
           </div>
         </article>
       </div>
+      <Footer />
     </>
   );
 };

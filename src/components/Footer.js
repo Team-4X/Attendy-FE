@@ -1,5 +1,6 @@
 import "./social-container.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import {
   faYoutube,
   faFacebook,
@@ -52,7 +53,7 @@ export const Footer = () => {
             </td>
             <td>
               <a href="#" class="has-text-dark">
-                Contact Us
+                <Link to="/contact" className="has-text-dark">Contact Us</Link>
               </a>
             </td>
             <td>
