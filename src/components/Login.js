@@ -4,11 +4,14 @@ import image from "../assets/working-together.jpg";
 // import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
+import { useDispatch } from "react-redux";
+import {setUser} from "../store/auth.js";
 
 export const Login = () => {
   // const [data, setData] = useState();
   // const [name, setName] = useState();
   //
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   //
   // const handleSubmit = async (e) => {
@@ -44,10 +47,11 @@ export const Login = () => {
       },
     });
 
-    const {token} = await res.json();
+    const {token, user} = await res.json();
 
     if(res.ok) {
       Cookies.set('token', token);
+      dispatch(setUser(user));
       navigate('/');
     }
   };

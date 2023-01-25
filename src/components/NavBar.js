@@ -28,6 +28,7 @@ export const NavBar = () => {
   const handleLogout = (e) => {
     e.preventDefault();
     Cookies.remove('token');
+    dispatch(logout());
     getToken();
     navigate('/');
   }
