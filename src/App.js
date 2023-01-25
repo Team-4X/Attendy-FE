@@ -11,9 +11,11 @@ import { MarkAttendance } from "./components/MarkAttendance";
 import CheckAuth from "./utils/CheckAuth";
 import Guest from "./utils/Guest";
 import { useEffect, useState } from "react";
+
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import setUser from "./store/auth.js";
+
+import {setUser} from "./store/auth.js";
 import Cookies from 'js-cookie';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -34,13 +36,17 @@ function App() {
         Authorization: `Bearer ${token}`,
       },
     });
-
     if (res.ok) {
       const user = await res.json();
       console.log(user);
-      dispatch(setUser(user));
+      try {
+        dispatch(setUser(user));
+      } catch (err){
+        console.log(err);
+      }
+    } else {
+      console.log('fucked up');
     }
-
     setIsLoading(false);
   }
 
@@ -52,7 +58,7 @@ function App() {
     return <p>Loading ...</p>;
   }
 
-  console.log(token);
+  console.log(`Token: ${token}`);
 
   return (
     <div className="App">
