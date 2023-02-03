@@ -4,12 +4,7 @@ import { Link } from "react-router-dom";
 import {
   faYoutube,
   faFacebook,
-  faTwitter,
-  faInstagram,
   faGoogle,
-  faGoodreads,
-  faGooglePlus,
-  faGooglePlay,
 } from "@fortawesome/free-brands-svg-icons";
 export const Footer = () => {
   return (
