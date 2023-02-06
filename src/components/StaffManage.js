@@ -228,6 +228,44 @@ export const StaffManage = () => {
 
       <div className="container">
 
+        <div className="container m-5 has-text-centered">
+        {
+          editBoxVisibility &&
+          <article className="message is-info mb-5  is-centered" style={{width: 50 + "%", margin: "auto"}}>
+            <div className="message-header">
+              <p>Teachers</p>
+              <button className="delete" aria-label="delete" onClick={() => {
+                setEditBoxVisibility(false);
+              }}></button>
+            </div>
+            <div className="message-body has-text-dark has-background-light">
+
+              <form onSubmit={handleEditForm}>
+
+                <div className="columns">
+                  <div className="column has-text-weight-bold">Name</div>
+                  <div className="column has-text-weight-bold">Staff ID</div>
+                </div>
+
+                <div className="columns">
+                  <div className="column">{selectedTeacherName}</div>
+                  <div className="column">{selectedTeacherID}</div>
+                </div>
+
+                <div className="field">
+                  <div className="control">
+                    <input className="input m-1" type="text" placeholder="New Name" name="name" value={newTeacherName} onChange={handleNewNameChange}/>
+                    <input className="input m-1" type="text" placeholder="New StaffID" name="staffID" value={newTeacherID} onChange={handleNewIDChange}/>
+                  </div>
+                </div>
+                <button className="button is-info" type="submit">Edit</button>
+              </form>
+
+            </div>
+        </article>
+        }
+        </div>
+
       {/* use tabs here */}
         <TabNavigation
           tabs={tabs}
@@ -285,42 +323,8 @@ export const StaffManage = () => {
                 <div className="column has-text-weight-bold">Edit</div>
                 <div className="column has-text-weight-bold">Staff ID</div>
               </div>
-              {
-                editBoxVisibility &&
-                <article className="message is-info mb-5  is-centered" style={{width: 50 + "%", margin: "auto"}}>
-                  <div className="message-header">
-                    <p>Teachers</p>
-                    <button className="delete" aria-label="delete" onClick={() => {
-                      setEditBoxVisibility(false);
-                    }}></button>
-                  </div>
-                  <div className="message-body has-text-dark has-background-light">
 
-                    <form onSubmit={handleEditForm}>
-
-                      <div className="columns">
-                        <div className="column has-text-weight-bold">Name</div>
-                        <div className="column has-text-weight-bold">Staff ID</div>
-                      </div>
-
-                      <div className="columns">
-                        <div className="column">{selectedTeacherName}</div>
-                        <div className="column">{selectedTeacherID}</div>
-                      </div>
-
-                      <div className="field">
-                        <div className="control">
-                          <input className="input m-1" type="text" placeholder="New Name" name="name" value={newTeacherName} onChange={handleNewNameChange}/>
-                          <input className="input m-1" type="text" placeholder="New StaffID" name="staffID" value={newTeacherID} onChange={handleNewIDChange}/>
-                        </div>
-                      </div>
-                      <button className="button is-info" type="submit">Edit</button>
-                    </form>
-
-                  </div>
-              </article>
-              }
-              
+              {/* edit box was here */}
 
               {/* dynamically rendering teachers data from teachers useState */}
               {
