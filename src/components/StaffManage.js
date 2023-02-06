@@ -60,8 +60,57 @@ export const StaffManage = () => {
   }
 
   // handling edit
+
+  const [editBoxVisibility, setEditBoxVisibility] = useState(false);
+  const [selectedTeacherName, setSelectedTeacherName] = useState('');
+  const [selectedTeacherID, setSelectedTeacherID] = useState('');
+  const [selectedTeacherUID, setSelectedTeacherUID] = useState('');
+
+  const [newTeacherName, setNewTeacherName] = useState('');
+  const [newTeacherID, setNewTeacherID] = useState('');
+
+  const handleNewNameChange = (e) => {
+    setNewTeacherName(e.target.value);
+  }
+  const handleNewIDChange = (e) => {
+    setNewTeacherID(e.target.value);
+  }
+
+  const clearEditForm = () => {
+    setNewTeacherID('');
+    setNewTeacherName('');
+  }
+
   const handleEdit = (item) => {
-    console.log(item);
+    setSelectedTeacherName(item.name);
+    setSelectedTeacherID(item.id);
+    setSelectedTeacherUID(item._id);
+    setEditBoxVisibility(true);
+  }
+
+  const handleEditForm = async (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const form = {
+      new_name: data.get("name"),
+      new_id: data.get("staffID"),
+      id: selectedTeacherUID,
+    }
+
+    clearEditForm();
+
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/staff/editTeachers`, {
+      method: "PUT",
+      body: JSON.stringify(form),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+
+    if (res.ok) {
+      fetchTeachers();
+      setEditBoxVisibility(false);
+    }
   }
 
   // handle adding a new teacher
@@ -236,7 +285,43 @@ export const StaffManage = () => {
                 <div className="column has-text-weight-bold">Edit</div>
                 <div className="column has-text-weight-bold">Staff ID</div>
               </div>
-        
+              {
+                editBoxVisibility &&
+                <article className="message is-info mb-5  is-centered" style={{width: 50 + "%", margin: "auto"}}>
+                  <div className="message-header">
+                    <p>Teachers</p>
+                    <button className="delete" aria-label="delete" onClick={() => {
+                      setEditBoxVisibility(false);
+                    }}></button>
+                  </div>
+                  <div className="message-body has-text-dark has-background-light">
+
+                    <form onSubmit={handleEditForm}>
+
+                      <div className="columns">
+                        <div className="column has-text-weight-bold">Name</div>
+                        <div className="column has-text-weight-bold">Staff ID</div>
+                      </div>
+
+                      <div className="columns">
+                        <div className="column">{selectedTeacherName}</div>
+                        <div className="column">{selectedTeacherID}</div>
+                      </div>
+
+                      <div className="field">
+                        <div className="control">
+                          <input className="input m-1" type="text" placeholder="New Name" name="name" value={newTeacherName} onChange={handleNewNameChange}/>
+                          <input className="input m-1" type="text" placeholder="New StaffID" name="staffID" value={newTeacherID} onChange={handleNewIDChange}/>
+                        </div>
+                      </div>
+                      <button className="button is-info" type="submit">Edit</button>
+                    </form>
+
+                  </div>
+              </article>
+              }
+              
+
               {/* dynamically rendering teachers data from teachers useState */}
               {
                 teachers?.slice(0, 9).map(item => (
