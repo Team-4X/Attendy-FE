@@ -1,0 +1,22 @@
+a {
+    color: white;
+}
+
+a:hover {
+    color: rgb(233, 199, 199);
+}
+
+#signup-button {
+    color: black;
+}
+
+#signup-button:hover {
+    color: rgb(233, 199, 199);
+}
+
+#contact-btn {
+    color: rgb(65, 63, 63);
+}
+#contact-btn:hover {
+    color: black;
+}
