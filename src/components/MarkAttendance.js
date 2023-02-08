@@ -3,40 +3,75 @@ import { Footer } from "./Footer";
 import { MarkAttendanceStudents } from "./MarkAttendanceStudents";
 import teacherImg from "./assets/teacher-face.png";
 
+import { useState } from "react";
+
 export const MarkAttendance = () => {
+
+  const [userValidated, setUserValidated] = useState(false);
+
+  const handleSignInForm = async (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const form = {
+      id: data.get("staffID"),
+      password: data.get("password")
+    };
+    await fetch(`${process.env.REACT_APP_API_URL}/staff/loginTeacher`, {
+      method: "POST",
+      body: JSON.stringify(form),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+    .then(response => response.json())
+    .then(data => setUserValidated(data))
+    .catch(error => console.error(error));
+
+  };
+
   return (
     <div>
       <NavBar></NavBar>
       <div className="container">
         <h1 className="title is-1 has-text-centered m-5">Mark Attendance</h1>
-        <form className="has-text-centered">
-          <figure className="image container is-128x128 mb-5">
-            {/* <a href="https://iconscout.com/3ds/teacher" target="_blank">Teacher explaining while sitting on armchair 3D Illustration</a> by <a href="https://iconscout.com/contributors/mintemid" target="_blank">Mintemid</a> */}
-            <img src={teacherImg} />
-          </figure>
-          <div className="field">
-            <div className="control mb-3">
-              <input
-                className="input"
-                type="text"
-                name="staffID"
-                placeholder="Staff ID"
-              />
+        {
+          !userValidated &&
+          <form className="has-text-centered mb-5" onSubmit={handleSignInForm}>
+            <h2 className="title is-3 has-text-centered m-3">You need to logged in as a teacher!</h2>
+            <figure className="image container is-128x128 mb-5">
+              {/* <a href="https://iconscout.com/3ds/teacher" target="_blank">Teacher explaining while sitting on armchair 3D Illustration</a> by <a href="https://iconscout.com/contributors/mintemid" target="_blank">Mintemid</a> */}
+              <img src={teacherImg} />
+            </figure>
+            <div className="field">
+              <div className="control mb-3">
+                <input
+                  className="input"
+                  type="text"
+                  name="staffID"
+                  placeholder="Staff ID"
+                />
+              </div>
+              <div className="control mb-3">
+                <input
+                  className="input"
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                />
+              </div>            
+              <button className="button is-dark" type="submit">
+                Sign in
+              </button>
             </div>
-            <div className="control mb-3">
-              <input
-                className="input"
-                type="password"
-                name="password"
-                placeholder="password"
-              />
-            </div>            
-            <button className="button is-dark" type="submit">
-              Sign in
-            </button>
+          </form>
+        }
+        {
+          userValidated &&
+          <div className="has-text-centered">
+            <button className="button is-info" onClick={() => setUserValidated(false)}>Logout</button>
+            <MarkAttendanceStudents></MarkAttendanceStudents>
           </div>
-        </form>
-        <MarkAttendanceStudents></MarkAttendanceStudents>
+        }
       </div>
       <Footer></Footer>
     </div>
