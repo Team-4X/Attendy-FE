@@ -68,7 +68,7 @@ export const MarkAttendance = () => {
         {
           userValidated &&
           <div className="has-text-centered">
-            <button className="button is-info" onClick={() => setUserValidated(false)}>Logout</button>
+            <button className="button is-info" onClick={() => setUserValidated(false)}>Logout Teacher</button>
             <MarkAttendanceStudents></MarkAttendanceStudents>
           </div>
         }
