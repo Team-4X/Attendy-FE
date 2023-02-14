@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DropDown } from "./assets/DropDown";
+import { Icon } from "./assets/Icon";
 import { faX, faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -28,14 +29,6 @@ export const MarkAttendanceStudents = () => {
 
   }
 
-  const handleMarkPresent = (e) => {
-    e.preventDefault();
-    console.log("Present!");
-  }
-  const handleMarkAbsent = (e) => {
-    e.preventDefault();
-    console.log("Absent!");
-  }
 
   return (
     <div className="container">
@@ -55,20 +48,15 @@ export const MarkAttendanceStudents = () => {
               {
                 students &&
                 students.map(student => (
-                  <div className="columns m-3">
-                    <div className="column">
+                  <div className="columns m-3" key={student._id}>
+                    <div className="column is-one-third">
                       <span className="has-text-grey">{student.name}</span>
                     </div>
                     <div className="column">
                       <span className="has-text-grey">{student.class}</span>
                     </div>
                     <div className="column">
-                      <a href="#" className="m-3 has-text-success" onClick={handleMarkPresent}>
-                        <FontAwesomeIcon icon={faCheck} />
-                      </a>
-                      <a href="#" className="m-3 has-text-danger" onClick={handleMarkAbsent}>
-                        <FontAwesomeIcon icon={faX} />
-                      </a>
+                      <Icon student={student}/>
                     </div>
                   </div>
                 ))

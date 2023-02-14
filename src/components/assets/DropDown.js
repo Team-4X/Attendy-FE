@@ -31,7 +31,7 @@ export const DropDown = (props) => {
 
         {
           props.items.map((item, index) => (
-            <a href="#" className={`dropdown-item ${index==activeEle?'is-active':''}`}
+            <a key={index} href="#" className={`dropdown-item ${index==activeEle?'is-active':''}`}
             onClick={() => setActiveEle(index)}>{item}</a>
           ))
         }
