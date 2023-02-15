@@ -16,6 +16,11 @@ export const MarkAttendance = () => {
       id: data.get("staffID"),
       password: data.get("password")
     };
+
+    const teacherVals = {
+      id: data.get("staffID")
+    }
+
     await fetch(`${process.env.REACT_APP_API_URL}/staff/loginTeacher`, {
       method: "POST",
       body: JSON.stringify(form),
@@ -24,7 +29,19 @@ export const MarkAttendance = () => {
       },
     })
     .then(response => response.json())
-    .then(data => setUserValidated(data))
+    .then(data => {
+
+      setUserValidated(data);
+
+      fetch(`${process.env.REACT_APP_API_URL}/attendance/markTeacherAttendance`, {
+        method: "POST",
+        body:JSON.stringify(teacherVals),
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+
+    })
     .catch(error => console.error(error));
 
   };
