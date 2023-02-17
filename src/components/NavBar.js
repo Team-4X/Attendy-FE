@@ -13,6 +13,13 @@ export const NavBar = () => {
   const [token, setToken] = useState(null);
   const dispatch = useDispatch(logout());
 
+  const [showMenu, setShowMenu] = useState(false);
+
+  const showMenus = () => {
+    console.log('hamburger clicked!');
+    setShowMenu(!showMenu);
+  }
+
   let buttons;
   const renderButtons = () => {
     if (token != null) {
@@ -50,11 +57,36 @@ export const NavBar = () => {
 
   return (
     <nav class="navbar is-dark is fixed-top">
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+      <a onClick={showMenus} role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true" className=""></span>
+        <span aria-hidden="true" className=""></span>
+        <span aria-hidden="true" className=""></span>
       </a>
+      {
+        showMenu &&
+        <aside className='menu is-open is-hidden-desktop'>
+            {buttons}
+            <p className="menu-label">Places</p>
+            <ul className="menu-list">
+              <li>
+                <a>
+                <Link className="has-text-dark" to={"/"}>Home</Link>
+                </a>
+              </li>
+              <li>
+                <a>
+                <Link  className="has-text-dark" to={"/about"}>About us</Link>
+                </a>
+              </li>
+              <li>
+                <a>
+                <Link  className="has-text-dark" to={"/mark-attendance"}>Mark Attendance</Link>
+                </a>
+              </li>
+            </ul>
+        </aside>
+
+      }
       <div class="navbar-menu">
         <div class="navbar-start">
           <a className="navbar-item">
