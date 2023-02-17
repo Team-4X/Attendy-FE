@@ -1,9 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faClock, faCalendar, faUserGraduate } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 import "./SideBar.css";
 
 export const SideBar = (props) => {
+  const navigate = useNavigate();
+
+  const goToMarkAttendance = () => {
+    navigate("/mark-attendance");
+  }
+
   return (
     <div className="box is-fullheight is-hidden-mobile">
       <div className="box has-background-light">
@@ -25,7 +32,7 @@ export const SideBar = (props) => {
         </span>
         <a className="has-text-dark">Calendar</a>
       </div>
-      <div className="box has-background-light">
+      <div className="box has-background-light" onClick={goToMarkAttendance}>
         <span className="icon mr-2">
           <FontAwesomeIcon icon={faUserGraduate} />
         </span>
