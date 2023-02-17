@@ -16,9 +16,12 @@ export const NavBar = () => {
   let buttons;
   const renderButtons = () => {
     if (token != null) {
-      buttons = <div class="buttons"><a className="button is-dark" onClick={handleLogout}><strong>Logout</strong></a></div>
+      buttons = <div class="buttons"><a className="button is-light" onClick={handleLogout}><strong>Logout</strong></a></div>
     } else {
-      buttons = <div className="buttons"><a class="button is-white"><strong><Link to={"/auth/register"}><span id="signup-button">Sign up</span></Link></strong></a><a class="button is-dark"><Link to={"/auth/login"}>Log in</Link></a></div>
+      buttons = <div className="buttons">
+        <a class="button is-light"><strong><Link to={"/auth/register"}><span id="signup-button" className="has-text-dark">Sign up</span></Link></strong></a>
+        <a class="button is-light mr-2"><Link to={"/auth/login"} className="has-text-dark"><strong>Log In</strong></Link></a>
+        </div>
     } 
   }
     
@@ -47,13 +50,18 @@ export const NavBar = () => {
 
   return (
     <nav class="navbar is-dark is fixed-top">
-      <div id="navbar" class="navbar-menu">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+      <div class="navbar-menu">
         <div class="navbar-start">
           <a className="navbar-item">
-            <Link to={"/"}>Home</Link>
+            <Link className="has-text-white" to={"/"}>Home</Link>
           </a>
           <a class="navbar-item">
-            <Link to={"/about"}>About us</Link>
+            <Link  className="has-text-white" to={"/about"}>About us</Link>
           </a>
         </div>
 
