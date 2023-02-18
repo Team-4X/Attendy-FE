@@ -37,3 +37,19 @@ a:hover {
   .menu.is-open {
     right: 0;
   }
+
+  .navbar {
+    background-color: rgb(241, 241, 241);
+    border-radius: 10px;
+    box-shadow: 1px 3px 10px rgba(0,0,0,0.2);
+  }
+
+  .navbar .has-text-dark {
+    margin: 2px;
+    border-radius: 10px;
+  }
+
+  .navbar {
+    display: flex;
+    min-width: 300px;
+  }

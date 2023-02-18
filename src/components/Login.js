@@ -57,14 +57,14 @@ export const Login = () => {
   };
 
   return (
-    <div class="container mt-5 is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-half  ">
-          <h1 class="title has-text-centered">Attendy Welcomes You!</h1>
+    <div className="container mt-5 is-max-desktop">
+      <div className="columns is-centered">
+        <div className="column is-half  ">
+          <h1 className="title has-text-centered">Attendy Welcomes You!</h1>
 
-          <h1 class="subtitle  has-text-centered">Let's get you logged in.</h1>
+          <h1 className="subtitle  has-text-centered">Let's get you logged in.</h1>
 
-          <div class="has-text-centered">
+          <div className="has-text-centered">
             <img
               // src="3255337.jpg"
               src={image}
@@ -75,26 +75,26 @@ export const Login = () => {
 
             <form onSubmit={handleSubmit}>
               <input
-                class="input mb-3 "
+                className="input mb-3 "
                 type="text"
                 placeholder="User ID "
                 name="userID"
               ></input>
               <br></br>
               <input
-                class="input mb-3 "
+                className="input mb-3 "
                 type="password"
                 placeholder="Password"
                 name="password"
               ></input>
               <br></br>
-              <button type="submit" class="button is-dark">
+              <button type="submit" className="button is-dark">
                 Login
               </button>
               <br></br>
               <button
                 type="button"
-                class="button is-link my-2"
+                className="button is-link my-2"
                 onClick={handleCancel}
               >
                 Cancel

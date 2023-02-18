@@ -4,13 +4,13 @@
 
 
 import { useState } from "react"
+import attendyLogo from "../assets/attendy.png";
 
-export const Heading = (props) => {
-  const [headingString, setHeadingString] = useState(props.headingString)
+export const Heading = () => {
+
 
   return (
     <div>
-      <h1 class="title is-1">{headingString}</h1>
     </div>
   )
 }
