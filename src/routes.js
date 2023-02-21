@@ -14,6 +14,7 @@ import { PrivacyPolicy } from "./components/PrivacyPolicy";
 
 import CheckAuth from "./utils/CheckAuth";
 import Guest from "./utils/Guest";
+import { AdminMessages } from "./components/AdminMessages";
 
 export default createBrowserRouter([
 	{
@@ -92,7 +93,13 @@ export default createBrowserRouter([
 			element: (
 				<PrivacyPolicy/>
 			)
-		}
+		},
+		{
+			path: "/admin-messages",
+			element: (
+				<AdminMessages/>
+			)
+		},
 		]
 
 	}
