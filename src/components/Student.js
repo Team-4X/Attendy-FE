@@ -7,6 +7,9 @@ import "bulma/css/bulma.min.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 export const Student = () => {
   const [filteredStudents, setFilteredstudents] = useState([]);
   const [students, setStudents] = useState([]);
@@ -48,34 +51,41 @@ export const Student = () => {
       <h1 className="subtitle is-2 has-text-centered mt-5">
         Attendance of Students
       </h1>
-      <div className="columns mt-4 is-centered">
-        <div className="column mr-4 ml-4">
+
+      <div className="columns">
+        <div className="column">
+          <div class="select">
+            <select>
+              <option>Grade 7</option>
+              <option>Grade 8</option>
+            </select>
+          </div>
+        </div>
+        <div className="column mr-3 ml-3">
           <div className="control">
             <input
               className="input"
               type="text"
               placeholder="Student Name"
               onKeyDown={handleKey}
+
               onChange={(e) => handleSearch(e.target.value.toLowerCase())}
             />
+          </div>
 
-            <div className="userInfo">
-              {filteredStudents.map((item) => (
-                <div
-                  className="userId"
-                  key={item._id}
-                  onClick={() => handleSelect(item._id)}
-                >
-                  <div className="displayName">{item.name}</div>
-                </div>
-              ))}
-            </div>
+          <div className="userInfo">
+            {filteredStudents.map((item) => (
+              <div
+                className="userId"
+                key={item._id}
+                onClick={() => handleSelect(item._id)}
+              >
+                 <div className="displayName">{item.name}</div>
+              </div>
+            ))}
           </div>
         </div>
-
-        {/* <Table data={data}></Table> */}
-
-        <div className="column mr-4 ml-4">
+        <div className="column">
           <div className="control">
             <input
               className="input"
@@ -84,8 +94,7 @@ export const Student = () => {
             />
           </div>
         </div>
-
-        <div className="column mr-4 ml-4">
+        <div className="column mr-5">
           <div className="control">
             <input className="input" type="text" placeholder="Date" />
           </div>

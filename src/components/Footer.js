@@ -12,9 +12,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 export const Footer = () => {
   return (
-    <footer class="footer has-background-light">
-      <div class="content mb-5">
-        <table class="table table is-hoverable has-background-light">
+    <footer className="footer has-background-light">
+      <div className="content mb-5">
+        <table className="table table is-hoverable has-background-light">
           <tr>
             <th>Get Started</th>
             <th>About Us</th>
@@ -23,22 +23,22 @@ export const Footer = () => {
           </tr>
           <tr>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 Home
               </a>
             </td>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 Company Information
               </a>
             </td>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 FAQ
               </a>
             </td>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 Terms of Service
               </a>
             </td>
@@ -46,22 +46,22 @@ export const Footer = () => {
 
           <tr>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 Sign Up
               </a>
             </td>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 Contact Us
               </a>
             </td>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 Help Desk
               </a>
             </td>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 Terms of Use
               </a>
             </td>
@@ -69,28 +69,28 @@ export const Footer = () => {
 
           <tr>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 Downloads
               </a>
             </td>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 Reviews
               </a>
             </td>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 Feature
               </a>
             </td>
             <td>
-              <a href="#" class="has-text-dark">
+              <a href="#" className="has-text-dark">
                 Privacy Policy
               </a>
             </td>
           </tr>
         </table>
-        <div class="social has-text-centered">
+        <div className="social has-text-centered">
           <strong>
             <center>Get Connected With Us On Social Networks!</center>
             <br></br>
@@ -116,13 +116,13 @@ export const Footer = () => {
         </div>
       </div>
 
-      <center class="is-size-7">
+      <center className="is-size-7">
         Attendy Home | Contact Us | Security | compliance | IPR compliance |
         Anti Spam Policy | Terms of Services | Privacy Policy | GDPR Compliance
         | Abuse Policy
       </center>
       <h6>
-        <center class="is-size-7">
+        <center className="is-size-7">
           © 2022, Attendy. All Rights Reserved. Privacy Policy
         </center>
       </h6>

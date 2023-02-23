@@ -4,37 +4,41 @@ import { Link } from "react-router-dom";
 
 export const NavBar = () => {
   return (
-    <nav class="navbar is-dark is fixed-top">
-      <div id="navbar" class="navbar-menu">
-        <div class="navbar-start">
+    <nav className="navbar is-dark is fixed-top">
+      <div id="navbar" className="navbar-menu">
+        <div className="navbar-start">
           <a className="navbar-item">
             <Link to={"/"}>Home</Link>
           </a>
-          <a class="navbar-item">
+          <a className="navbar-item">
             <Link to={"/about"}>About us</Link>
           </a>
 
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">More</a>
+          <div className="navbar-item has-dropdown is-hoverable">
+            <a className="navbar-link">More</a>
 
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                <Link to={"/contact"}><span id="contact-btn">Contact Us</span></Link>
+            <div className="navbar-dropdown">
+              <a className="navbar-item">
+                <Link to={"/contact"}>
+                  <span id="contact-btn">Contact Us</span>
+                </Link>
               </a>
-              <hr class="navbar-divider" />
-              <a class="navbar-item">Logout</a>
+              <hr className="navbar-divider" />
+              <a className="navbar-item">Logout</a>
             </div>
           </div>
         </div>
 
-        <div class="navbar-end">
-          <div class="buttons">
-            <a class="button is-white">
+        <div className="navbar-end">
+          <div className="buttons">
+            <a className="button is-white">
               <strong>
-                <Link to={"/auth/register"}><span id="signup-button">Sign up</span></Link>
+                <Link to={"/auth/register"}>
+                  <span id="signup-button">Sign up</span>
+                </Link>
               </strong>
             </a>
-            <a class="button is-dark">
+            <a className="button is-dark">
               <Link to={"/auth/login"}>Log in</Link>
             </a>
           </div>
