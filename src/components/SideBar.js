@@ -1,26 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faUser, faCalendar, faUserGraduate } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import Cookies from 'js-cookie';
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 
 import "./SideBar.css";
+import { checkAuthentication } from "../store/auth";
 
 export const SideBar = (props) => {
   const navigate = useNavigate();
-
-  const [token, setToken] = useState(null);
-
-  // get tokens from the browser
-  const getToken = () => {
-    setToken(Cookies.get('token'));
-  }
-
-  useEffect(() => {
-    getToken();
-  }, []);
-
-
+  
+  let loggedIn = useSelector((state) => state.auth.isAuthenticated);
 
   const goToMarkAttendance = () => {
     navigate("/mark-attendance");
@@ -39,7 +29,7 @@ export const SideBar = (props) => {
         <a className="has-text-dark">Home</a>
       </div>
 {
-  token &&
+  loggedIn &&
     
       <div className="box has-background-light" onClick={goToAdminMessages}>
         <span className="icon mr-2">
