@@ -32,12 +32,23 @@
   margin-bottom: 5px;
   cursor: pointer;
   padding:5px;
+  width:245px;
+  align-items: center;
+  margin-left: 85px;
 }
 .userId:hover{
   background-color: #D9E3F0;
+ 
 
 }
-
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 5px;;
+}
 
 @keyframes App-logo-spin {
   from {
