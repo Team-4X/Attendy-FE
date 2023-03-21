@@ -10,9 +10,11 @@ import {StudentManage} from "./components/StudentManage";
 import {Staff} from "./components/Staff";
 import {StaffManage} from "./components/StaffManage";
 import {MarkAttendance} from "./components/MarkAttendance";
+import { PrivacyPolicy } from "./components/PrivacyPolicy";
 
 import CheckAuth from "./utils/CheckAuth";
 import Guest from "./utils/Guest";
+import { AdminMessages } from "./components/AdminMessages";
 
 export default createBrowserRouter([
 	{
@@ -85,7 +87,19 @@ export default createBrowserRouter([
 			element: (
 				<MarkAttendance/>
 			),
-		}
+		},
+		{
+			path: "/privacy-policy",
+			element: (
+				<PrivacyPolicy/>
+			)
+		},
+		{
+			path: "/admin-messages",
+			element: (
+				<AdminMessages/>
+			)
+		},
 		]
 
 	}

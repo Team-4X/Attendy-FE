@@ -4,6 +4,12 @@
 
 
 }
+
+.signup-image-size {
+    width: 50;
+    height: 50;
+}
+
 input[type=text],input[type=password]{
     width: 350px;
 

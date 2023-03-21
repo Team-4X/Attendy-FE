@@ -1,5 +1,6 @@
 import React from "react";
 import "bulma/css/bulma.min.css";
+import "./login-content.css";
 import image from "./14230944_5437683.jpg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -36,52 +37,53 @@ export const SignUp = () => {
   }
 
   return (
-    <div class="container mt-5 is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-half">
-          <h1 className="title is-1 has-text-centered">WELCOME ATTENDY</h1>
-          <h2 className="title is-2 has-text-centered">
+    <div className="container mt-5 is-max-desktop">
+      <div className="columns is-centered">
+        <div className="column is-half">
+          <h1 className="title has-text-centered">WELCOME ATTENDY</h1>
+          <h2 className="subtitle has-text-centered">
             Let's get you started!
           </h2>
 
-          <div class="has-text-centered">
-            <img src={image} alt="signUp" className="image is-4by2" />
+          <div className="has-text-centered">
+            <img src={image} alt="signUp" className="signup-image-size" 
+            style={{width: 350, height: 320}}/>
 
             <form onSubmit={handleSubmit}>
-              <div class="field mb-4">
-                <div class="control">
-                  <input class="input" name="firstName" type="text" placeholder="First Name" required={true} />
+              <div className="field mb-4">
+                <div className="control">
+                  <input className="input" name="firstName" type="text" placeholder="First Name" required={true} />
                 </div>
               </div>
 
-              <div class="field mb-4">
-                <div class="control">
-                  <input class="input" name="lastName" type="text" placeholder="Last Name" required={true} />
+              <div className="field mb-4">
+                <div className="control">
+                  <input className="input" name="lastName" type="text" placeholder="Last Name" required={true} />
                 </div>
               </div>
 
-              <div class="field mb-4">
-                <div class="control">
-                  <input class="input" name="userID" type="text" placeholder="User ID" required={true} />
+              <div className="field mb-4">
+                <div className="control">
+                  <input className="input" name="userID" type="text" placeholder="User ID" required={true} />
                 </div>
               </div>
 
-              <div class="field mb-4">
-                <div class="control">
-                  <input class="input" name="email" type="text" placeholder="E-mail" required={true} />
+              <div className="field mb-4">
+                <div className="control">
+                  <input className="input" name="email" type="text" placeholder="E-mail" required={true} />
                 </div>
               </div>
 
-              <div class="field mb-4">
-                <div class="control">
-                  <input class="input" name="password" type="password" placeholder="Password" required={true} />
+              <div className="field mb-4">
+                <div className="control">
+                  <input className="input" name="password" type="password" placeholder="Password" required={true} />
                 </div>
               </div>
 
-              <div class="field mb-4">
-                <div class="control">
+              <div className="field mb-4">
+                <div className="control">
                   <input
-                    class="input"
+                    className="input"
                     type="password"
 
                     placeholder="Confirm Password"
@@ -90,18 +92,18 @@ export const SignUp = () => {
                 </div>
               </div>
 
-              <div class="grouped">
-                <div class="control">
-                  <button class="button is-dark is-fullwidth mb-2" type="submit">
+              <div className="grouped">
+                <div className="control">
+                  <button className="button is-dark mb-2" type="submit">
                     Sign-up
                   </button>
                 </div>
 
-              </div>
-              <div class="control">
-                <button onClick={handleCancel} type="button" class="button is-link is-fullwidth mb-5">
-                  <Link to={"/login"}>Cancel</Link>
-                </button>
+                <div className="control">
+                  <button onClick={handleCancel} type="button" className="button is-link mb-5">
+                    <Link to={"/login"} className="has-text-white">Cancel</Link>
+                  </button>
+                </div>
               </div>
             </form>
           </div>

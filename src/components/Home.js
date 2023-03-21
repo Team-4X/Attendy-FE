@@ -29,7 +29,7 @@ export const Home = () => {
   return (
     <>
       <NavBar></NavBar>
-      <Heading></Heading>
+      {/* <Heading></Heading> */}
       <div className="columns">
         <div className="column mt-2 ml-5">
           {/* <h2 className="title is-2 has-text-success">Navbar here</h2>
