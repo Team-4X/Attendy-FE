@@ -58,3 +58,7 @@
     transform: rotate(360deg);
   }
 }
+.student-input{
+  text-align: left;
+  margin-left: 15px;
+}
