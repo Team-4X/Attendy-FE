@@ -62,3 +62,11 @@
   text-align: left;
   margin-left: 15px;
 }
+.attedanceTable{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+
+}
