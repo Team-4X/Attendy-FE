@@ -15,7 +15,7 @@ export const TeacherInfo = () => {
 
     const handleFilterClick = () => {
         axios
-        .get(`http://localhost:4000/staff/${teacherId}`)
+        .get(`http://localhost:4000/staff-attendance/${teacherId}`)
         .then((res) => {
           // handle successful response
           console.log(res.data);
