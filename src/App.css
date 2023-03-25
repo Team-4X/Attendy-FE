@@ -28,6 +28,17 @@
   color: #61dafb;
 }
 
+.student-input{
+  text-align: left;
+  margin-left: 15px;
+}
+.attedanceTable{ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
