@@ -7,7 +7,7 @@ import {About} from "./components/About";
 import {ContactUs} from "./components/ContactUs";
 import {Student} from "./components/Student";
 import {StudentManage} from "./components/StudentManage";
-import {Staff} from "./components/Staff";
+import {TeacherInfo} from "./components/TeacherInfo";
 import {StaffManage} from "./components/StaffManage";
 import {MarkAttendance} from "./components/MarkAttendance";
 import { PrivacyPolicy } from "./components/PrivacyPolicy";
@@ -79,7 +79,7 @@ export default createBrowserRouter([
 		{
 			path: "/staff",
 			element: (
-				<Staff/>
+				<TeacherInfo/>
 			),
 		},
 		{
