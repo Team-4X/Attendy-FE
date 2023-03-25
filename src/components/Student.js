@@ -13,26 +13,41 @@ export const Student = () => {
   const [date, setDate] = useState([]);
   const [attendanceStatus, setAttendanceStataus] = useState("");
   const [attendanceDetails, setAttendanceDetails] = useState([]);
+  const [studentDetails, setStudentDetails] = useState([]);
 
-  const handleFilterClick = () => {
-    axios
-      .get(`http://localhost:4000/v1/attendance/${studentId}`)
-      .then((res) => {
-        // handle successful response
-        console.log(res.data);
+  const handleFilterClick = async () => {
+    try {
+      const res = await axios.get(`http://localhost:4000/student/${studentId}`);
+      //get student class and name
+      const studentDetails = res.data[0];
+      setStudentDetails(studentDetails);
+      const attendanceDetails = res.data[1];
+      //get student attendance details
+      setAttendanceDetails(attendanceDetails);
+      //console.log(attendanceDetails);
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+      const response = await axios.get(
+        `http://localhost:4000/find-AttendanceStudent/${date}`
+      );
+      //console.log(response.data);
 
-        const attendanceDetails = res.data;
-        setAttendanceDetails(attendanceDetails);
-        console.log(attendanceDetails);
-      })
-      .catch((error) => {
-        // handle error
-        console.log(error);
-      });
+      const attendanceDetails = response.data;
+      setAttendanceDetails(attendanceDetails);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleInputChange = (event) => {
-    setStudentId(event.target.value);
+    // check if the event target is the date input
+    if (event.target.type === "date") {
+      setDate(event.target.value);
+    } else {
+      setStudentId(event.target.value);
+    }
   };
 
   return (
@@ -45,11 +60,17 @@ export const Student = () => {
       <div className="columns">
         <div className="column">
           <input
-            className="input"
+            className="student-input"
             type="text"
             placeholder="Enter Student Id"
             value={studentId}
             onChange={handleInputChange}
+          />
+          <input
+            className="input-date mt-5"
+            value={date}
+            onChange={handleInputChange}
+            type="date"
           />
         </div>
 
@@ -69,6 +90,8 @@ export const Student = () => {
             <tr>
               <th scope="col">#</th>
               <th scope="col">Student ID</th>
+              <th scope="col">Student Name</th>
+              <th scope="col">Class Name</th>
               <th scope="col">Date</th>
               <th scope="col">Attendance Status</th>
             </tr>
@@ -77,7 +100,9 @@ export const Student = () => {
             {attendanceDetails.map((attendance, index) => (
               <tr key={attendance._id}>
                 <th scope="row">{index + 1}</th>
-                <td>{attendance.studentID}</td>
+                <td>{attendance.studentID.studentID}</td>
+                <td>{attendance.studentID.name}</td>
+                <td>{attendance.studentID.class}</td>
                 <td>{attendance.date}</td>
                 <td>{attendance.attendance}</td>
               </tr>

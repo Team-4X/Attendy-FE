@@ -59,8 +59,13 @@
   }
 }
 .student-input{
-  text-align: left;
-  margin-left: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  width: 80%;
+  box-sizing: border-box;
 }
 .attedanceTable{
   
@@ -69,4 +74,13 @@
   align-items: center;
   /* height: 100vh; */
 
+}
+.input-date{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  width: 80%;
+  box-sizing: border-box;
 }
