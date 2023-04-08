@@ -66,7 +66,7 @@ export const Student = () => {
           <div className="field has-addons">
             <div className="control is-expanded">
               <input
-                className="student-input"
+                className={`student-input ${date ? "prohibited" : ""}`}
                 type="text"
                 placeholder="Enter Student Id"
                 value={studentId}
@@ -83,7 +83,7 @@ export const Student = () => {
           </div>
 
           <input
-            className="input-date mt-5"
+            className={`student-input ${studentId ? "prohibited" : ""}`}
             value={date}
             name="date"
             onChange={handleInputChange}
