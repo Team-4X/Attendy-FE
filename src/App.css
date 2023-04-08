@@ -67,6 +67,10 @@
   width: 80%;
   box-sizing: border-box;
 }
+input.student-input::placeholder {
+  color: black;
+}
+
 .attedanceTable{
   
   display: flex;

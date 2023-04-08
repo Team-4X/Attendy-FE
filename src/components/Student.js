@@ -66,11 +66,12 @@ export const Student = () => {
           <div className="field has-addons">
             <div className="control is-expanded">
               <input
-                className="input"
+                className="student-input"
                 type="text"
                 placeholder="Enter Student Id"
                 value={studentId}
                 name="studentId"
+                disabled={!!date}
                 onChange={handleInputChange}
               />
             </div>
@@ -87,6 +88,7 @@ export const Student = () => {
             name="date"
             onChange={handleInputChange}
             type="date"
+            disabled={!!studentId}
           />
         </div>
 
