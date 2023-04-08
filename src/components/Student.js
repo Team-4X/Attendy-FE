@@ -50,6 +50,9 @@ export const Student = () => {
       setStudentId(value);
     }
   };
+  const handleClearInput = () => {
+    setStudentId("");
+  };
 
   return (
     <div>
@@ -60,14 +63,24 @@ export const Student = () => {
 
       <div className="columns">
         <div className="column">
-          <input
-            className="student-input"
-            type="text"
-            placeholder="Enter Student Id"
-            value={studentId}
-            name="studentId"
-            onChange={handleInputChange}
-          />
+          <div className="field has-addons">
+            <div className="control is-expanded">
+              <input
+                className="input"
+                type="text"
+                placeholder="Enter Student Id"
+                value={studentId}
+                name="studentId"
+                onChange={handleInputChange}
+              />
+            </div>
+            {studentId && (
+              <div className="control">
+                <button className="delete" onClick={handleClearInput}></button>
+              </div>
+            )}
+          </div>
+
           <input
             className="input-date mt-5"
             value={date}
