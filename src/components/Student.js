@@ -93,7 +93,7 @@ export const Student = () => {
         </div>
 
         <div className="column">
-          <button className="button is-dark" onClick={handleFilterClick}>
+          <button className="button is-dark " onClick={handleFilterClick}>
             Filter
           </button>
         </div>
