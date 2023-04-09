@@ -13,6 +13,8 @@ export const Student = () => {
   const [date, setDate] = useState([]);
   const [attendanceDetails, setAttendanceDetails] = useState([]);
   const [studentDetails, setStudentDetails] = useState([]);
+  const [isStudentIdDisabled, setIsStudentIdDisabled] = useState(false);
+  const [isDateDisabled, setIsDateDisabled] = useState(false);
 
   const handleFilterClick = async () => {
     try {
@@ -46,12 +48,17 @@ export const Student = () => {
 
     if (name === "date") {
       setDate(value);
+      setIsStudentIdDisabled(!!value);
     } else if (name === "studentId") {
       setStudentId(value);
+      setIsDateDisabled(!!value);
     }
   };
   const handleClearInput = () => {
     setStudentId("");
+    setDate("");
+    setIsStudentIdDisabled(false);
+    setIsDateDisabled(false);
   };
 
   return (
@@ -66,12 +73,14 @@ export const Student = () => {
           <div className="field has-addons">
             <div className="control is-expanded">
               <input
-                className={`student-input ${date ? "prohibited" : ""}`}
+                className={`student-input ${
+                  isStudentIdDisabled ? "prohibited" : ""
+                }`}
                 type="text"
                 placeholder="Enter Student Id"
                 value={studentId}
                 name="studentId"
-                disabled={!!date}
+                disabled={isStudentIdDisabled}
                 onChange={handleInputChange}
               />
             </div>
@@ -83,12 +92,12 @@ export const Student = () => {
           </div>
 
           <input
-            className={`student-input ${studentId ? "prohibited" : ""}`}
+            className={`student-input ${isDateDisabled ? "prohibited" : ""}`}
             value={date}
             name="date"
             onChange={handleInputChange}
             type="date"
-            disabled={!!studentId}
+            disabled={isDateDisabled}
           />
         </div>
 
