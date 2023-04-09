@@ -7,6 +7,8 @@ import "bulma/css/bulma.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import "react-calendar/dist/Calendar.css";
+import { saveAs } from "file-saver";
+import Papa from "papaparse";
 
 export const Student = () => {
   const [studentId, setStudentId] = useState("");
@@ -64,6 +66,13 @@ export const Student = () => {
     setIsStudentIdDisabled(false);
     setIsDateDisabled(false);
   };
+  //download attendance report
+  const handleDownloadClick = () => {
+    const csvData = Papa.unparse(attendanceDetails);
+
+    const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
+    saveAs(blob, "Attendance_Report.csv");
+  };
 
   return (
     <div>
@@ -112,7 +121,9 @@ export const Student = () => {
         </div>
 
         <div className="column">
-          <button className="button is-dark">Download Report</button>
+          <button className="button is-dark" onClick={handleDownloadClick}>
+            Download Report
+          </button>
         </div>
       </div>
       <div className="attedanceTable">
