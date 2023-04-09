@@ -66,10 +66,14 @@
   line-height: 1.5;
   width: 80%;
   box-sizing: border-box;
+  padding-right: 16px;
   
 }
 input.student-input::placeholder {
   color: black;
+}
+.student-input:focus {
+  text-align: center !important;
 }
 
 .attedanceTable{

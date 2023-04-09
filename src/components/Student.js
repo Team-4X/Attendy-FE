@@ -41,6 +41,10 @@ export const Student = () => {
     } catch (error) {
       console.log(error);
     }
+    setStudentId("");
+    setIsStudentIdDisabled(false);
+    setDate("");
+    setIsDateDisabled(false);
   };
 
   const handleInputChange = (event) => {
