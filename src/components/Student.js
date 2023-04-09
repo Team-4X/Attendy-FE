@@ -1,48 +1,173 @@
+import { useState } from "react";
+import axios from "axios";
 import { NavBar } from "./NavBar";
 import { Footer } from "./Footer";
-import { Link } from "react-router-dom";
-
+import "../App.css";
 import "bulma/css/bulma.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@fortawesome/fontawesome-free/js/all.min.js";
+import "react-calendar/dist/Calendar.css";
+import { saveAs } from "file-saver";
+import Papa from "papaparse";
+
 export const Student = () => {
+  const [studentId, setStudentId] = useState("");
+  const [date, setDate] = useState([]);
+  const [attendanceDetails, setAttendanceDetails] = useState([]);
+  const [studentDetails, setStudentDetails] = useState([]);
+  const [isStudentIdDisabled, setIsStudentIdDisabled] = useState(false);
+  const [isDateDisabled, setIsDateDisabled] = useState(false);
+
+  const handleFilterClick = async () => {
+    try {
+      if (studentId !== "") {
+        console.log(studentId);
+        const res = await axios.get(
+          `http://localhost:4000/student/${studentId}`
+        );
+        // console.log(res.data);
+        // const studentDetails = res.data[0];
+        // console.log(studentDetails);
+        setStudentDetails(studentDetails);
+        const attendanceDetails = res.data;
+        console.log(attendanceDetails);
+        setAttendanceDetails(attendanceDetails);
+      } else if (date) {
+        const response = await axios.get(
+          `http://localhost:4000/find-AttendanceStudent/${date}`
+        );
+        const attendanceDetails = response.data;
+        console.log(attendanceDetails);
+        setAttendanceDetails(attendanceDetails);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setStudentId("");
+    setIsStudentIdDisabled(false);
+    setDate("");
+    setIsDateDisabled(false);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === "date") {
+      setDate(value);
+      setIsStudentIdDisabled(!!value);
+    } else if (name === "studentId") {
+      setStudentId(value);
+      setIsDateDisabled(!!value);
+    }
+  };
+  const handleClearInput = () => {
+    setStudentId("");
+    setDate("");
+    setIsStudentIdDisabled(false);
+    setIsDateDisabled(false);
+  };
+  //download attendance report
+  const handleDownloadClick = () => {
+    const headers = [
+      "Student ID",
+      "Student Name",
+      "Class Name",
+      "Date",
+      "Attendance Status",
+    ];
+    const rows = attendanceDetails.map((attendance) => [
+      attendance.studentID,
+      attendance.studentname,
+      attendance.class,
+      attendance.date,
+      attendance.attendance,
+    ]);
+    const csvData = Papa.unparse([headers, ...rows]);
+
+    const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
+    saveAs(blob, "Attendance_Report.csv");
+  };
+
   return (
     <div>
       <NavBar></NavBar>
-      <h1 class="subtitle is-2 has-text-centered mt-5">Attendance of Students</h1>
+      <h1 className="subtitle is-2 has-text-centered mt-5">
+        Attendance of Students
+      </h1>
 
-      <div class="columns mt-4 is-centered">
-        <div class="column mr-4 ml-4">
-          <div class="control">
-            <input class="input" type="text" placeholder="Student Name" />
+      <div className="columns">
+        <div className="column">
+          <div className="field has-addons">
+            <div className="control is-expanded">
+              <input
+                className={`student-input ${
+                  isStudentIdDisabled ? "prohibited" : ""
+                }`}
+                type="text"
+                placeholder="Enter Student Id"
+                value={studentId}
+                name="studentId"
+                disabled={isStudentIdDisabled}
+                onChange={handleInputChange}
+              />
+            </div>
+            {studentId && (
+              <div className="control">
+                <button className="delete" onClick={handleClearInput}></button>
+              </div>
+            )}
           </div>
+
+          <input
+            className={`student-input ${isDateDisabled ? "prohibited" : ""}`}
+            value={date}
+            name="date"
+            onChange={handleInputChange}
+            type="date"
+            disabled={isDateDisabled}
+          />
         </div>
 
-        <div class="column mr-4 ml-4">
-          <div class="control">
-            <input class="input" type="text" placeholder="present(p)/absent(a)" />
-          </div>
-        </div>
-
-        <div class="column mr-4 ml-4">
-          <div class="control">
-            <input class="input" type="text" placeholder="Date" />
-          </div>
-        </div>
-      </div>
-
-      <div class="box has-text-centered">
-        <div class="column">
-          <button class="button is-dark">
+        <div className="column">
+          <button className="button is-dark " onClick={handleFilterClick}>
             Filter
           </button>
         </div>
-        <div class="column ">
-          <button class="button is-dark">
+
+        <div className="column">
+          <button className="button is-dark" onClick={handleDownloadClick}>
             Download Report
           </button>
         </div>
       </div>
+      <div className="attedanceTable">
+        <table className="table mt-5 is-bordered is-striped  is-narrow is-hoverable is-max-desktop">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Student ID</th>
+              <th scope="col">Student Name</th>
+              <th scope="col">Class Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Attendance Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {attendanceDetails.map((attendance, index) => (
+              <tr key={attendance._id}>
+                <th scope="row">{index + 1}</th>
+                <td>{attendance.studentID}</td>
+                <td>{attendance.studentname}</td>
+                <td>{attendance.class}</td>
+                <td>{attendance.date}</td>
+                <td>{attendance.attendance}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <Footer></Footer>
     </div>
-
   );
 };

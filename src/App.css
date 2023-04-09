@@ -38,6 +38,28 @@
   align-items: center;
   /* height: 100vh; */
 }
+.userId{
+  margin-top: 5px;  
+  margin-bottom: 5px;
+  cursor: pointer;
+  padding:5px;
+  width:245px;
+  align-items: center;
+  margin-left: 85px;
+}
+.userId:hover{
+  background-color: #D9E3F0;
+ 
+
+}
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 5px;;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -46,4 +68,45 @@
   to {
     transform: rotate(360deg);
   }
+}
+.student-input{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  width: 80%;
+  box-sizing: border-box;
+  padding-right: 16px;
+  
+}
+input.student-input::placeholder {
+  color: black;
+}
+.student-input:focus {
+  text-align: center !important;
+}
+
+.attedanceTable{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+
+}
+.input-date{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  width: 80%;
+  box-sizing: border-box;
+}
+.clear-input{
+  background-color: aqua;
+}
+.prohibited {
+  cursor: not-allowed;
 }
