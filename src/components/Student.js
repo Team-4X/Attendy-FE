@@ -68,7 +68,21 @@ export const Student = () => {
   };
   //download attendance report
   const handleDownloadClick = () => {
-    const csvData = Papa.unparse(attendanceDetails);
+    const headers = [
+      "Student ID",
+      "Student Name",
+      "Class Name",
+      "Date",
+      "Attendance Status",
+    ];
+    const rows = attendanceDetails.map((attendance) => [
+      attendance.studentID,
+      attendance.studentname,
+      attendance.class,
+      attendance.date,
+      attendance.attendance,
+    ]);
+    const csvData = Papa.unparse([headers, ...rows]);
 
     const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
     saveAs(blob, "Attendance_Report.csv");
