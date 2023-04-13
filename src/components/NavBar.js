@@ -35,26 +35,24 @@ export const NavBar = () => {
       <div className="navbar-start is-hidden-mobile is-hidden-desktop is-flex-touch">
 
           <div className="buttons">
-              <a class="button is-light">
-                <strong>
-                  <Link to={"/auth/register"}>
-                    <span id="signup-button" className="has-text-dark">
-                      Sign up
-                    </span>
-                  </Link>
-                </strong>
-              </a>
               {
                 isAuthenticated ?
                   <a className="button is-light" onClick={handleLogout}>
                     <strong>Logout</strong>
                   </a>
                   :
-                  <a class="button is-light mr-2">
-                    <Link to={"/auth/login"} className="has-text-dark">
-                      <strong>Log In</strong>
+                  <div>
+                    <Link to={"/auth/register"}>
+                      <span id="signup-button" className="has-text-dark">
+                        Sign up
+                      </span>
                     </Link>
-                  </a>
+                    <a class="button is-light mr-2">
+                      <Link to={"/auth/login"} className="has-text-dark">
+                        <strong>Log In</strong>
+                      </Link>
+                    </a>
+                  </div>
               }
           </div>  
 
@@ -80,15 +78,6 @@ export const NavBar = () => {
         <aside className="menu is-open is-hidden-desktop">
 
           <div className="buttons">
-            <a class="button is-light">
-              <strong>
-                <Link to={"/auth/register"}>
-                  <span id="signup-button" className="has-text-dark">
-                    Sign up
-                  </span>
-                </Link>
-              </strong>
-            </a>
             {
               isAuthenticated ?
                 <a className="button is-light" onClick={handleLogout}>
@@ -99,6 +88,13 @@ export const NavBar = () => {
                   <Link to={"/auth/login"} className="has-text-dark">
                     <strong>Log In</strong>
                   </Link>
+                  <strong>
+                  <Link to={"/auth/register"}>
+                    <span id="signup-button" className="has-text-dark">
+                      Sign up
+                    </span>
+                </Link>
+              </strong>
                 </a>
             }
           </div>  
@@ -146,15 +142,6 @@ export const NavBar = () => {
         <div className="navbar-end">
           {/* {buttons} */}
           <div className="buttons">
-            <a class="button is-light">
-              <strong>
-                <Link to={"/auth/register"}>
-                  <span id="signup-button" className="has-text-dark">
-                    Sign up
-                  </span>
-                </Link>
-              </strong>
-            </a>
             {
               isAuthenticated ?
                 <a className="button is-light" onClick={handleLogout}>
@@ -165,6 +152,13 @@ export const NavBar = () => {
                   <Link to={"/auth/login"} className="has-text-dark">
                     <strong>Log In</strong>
                   </Link>
+                  <strong>
+                    <Link to={"/auth/register"}>
+                      <span id="signup-button" className="has-text-dark">
+                        Sign up
+                      </span>
+                    </Link>
+                  </strong>
                 </a>
             }
           </div>  
