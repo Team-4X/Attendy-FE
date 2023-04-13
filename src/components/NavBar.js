@@ -84,18 +84,18 @@ export const NavBar = () => {
                   <strong>Logout</strong>
                 </a>
                 :
-                <a class="button is-light mr-2">
+                <span class="button is-light mr-2">
                   <Link to={"/auth/login"} className="has-text-dark">
                     <strong>Log In</strong>
                   </Link>
-                  <strong>
-                  <Link to={"/auth/register"}>
-                    <span id="signup-button" className="has-text-dark">
-                      Sign up
-                    </span>
-                </Link>
-              </strong>
-                </a>
+                  <strong className="ml-2">
+                    <Link to={"/auth/register"}>
+                      <span id="signup-button" className="has-text-dark">
+                        Sign up
+                      </span>
+                    </Link>
+                  </strong>
+                </span>
             }
           </div>  
 
@@ -148,18 +148,20 @@ export const NavBar = () => {
                   <strong>Logout</strong>
                 </a>
                 :
-                <a class="button is-light mr-2">
-                  <Link to={"/auth/login"} className="has-text-dark">
-                    <strong>Log In</strong>
-                  </Link>
-                  <strong>
+                <div class="mr-2">
+                  <a className="button is-light">
+                    <Link to={"/auth/login"} className="has-text-dark">
+                      <strong>Log In</strong>
+                    </Link>
+                  </a>
+                  <strong className="button is-light">
                     <Link to={"/auth/register"}>
                       <span id="signup-button" className="has-text-dark">
                         Sign up
                       </span>
                     </Link>
                   </strong>
-                </a>
+                </div>
             }
           </div>  
           
