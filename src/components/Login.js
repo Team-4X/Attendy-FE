@@ -1,31 +1,18 @@
 import "./login-content.css";
 import { Link } from "react-router-dom";
 import image from "../assets/working-together.jpg";
-// import { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { useDispatch } from "react-redux";
 import {setUser} from "../store/auth.js";
 
 export const Login = () => {
-  // const [data, setData] = useState();
-  // const [name, setName] = useState();
-  //
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //
-  // const handleSubmit = async (e) => {
-  //     e.preventDefault();
-  //     fetch('http://localhost:4000/test')
-  //         .then((response) => {
-  //             return response.json();
-  //         })
-  //         .then((json) => {
-  //             setData(json);
-  //             console.log(json[0]);
-  //             setName(json[0].name);
-  //         });
-  // }
+
+  const [errorMessage, setErrorMessage] = useState(" ");
 
   const handleCancel = () => {
     navigate("/");
@@ -53,7 +40,10 @@ export const Login = () => {
       Cookies.set('token', token);
       dispatch(setUser(user));
       navigate('/');
+    } else {
+      setErrorMessage("Check your credentials!");
     }
+
   };
 
   return (
@@ -88,6 +78,9 @@ export const Login = () => {
                 name="password"
               ></input>
               <br></br>
+
+              <p className="has-text-danger mb-1">{ errorMessage }</p>
+
               <button type="submit" className="button is-dark">
                 Login
               </button>
