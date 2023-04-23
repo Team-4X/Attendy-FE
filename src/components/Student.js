@@ -21,7 +21,7 @@ export const Student = () => {
   const handleFilterClick = async () => {
     try {
       if (studentId !== "") {
-        console.log(studentId);
+        //console.log(studentId);
         const res = await axios.get(
           `http://localhost:4000/student/${studentId}`
         );
@@ -30,18 +30,28 @@ export const Student = () => {
         // console.log(studentDetails);
         setStudentDetails(studentDetails);
         const attendanceDetails = res.data;
-        console.log(attendanceDetails);
+        //console.log(attendanceDetails);
         setAttendanceDetails(attendanceDetails);
       } else if (date) {
         const response = await axios.get(
           `http://localhost:4000/find-AttendanceStudent/${date}`
         );
         const attendanceDetails = response.data;
-        console.log(attendanceDetails);
+        //console.log(attendanceDetails);
         setAttendanceDetails(attendanceDetails);
       }
     } catch (error) {
-      console.log(error);
+      if (error.response && error.response.status === 404) {
+        if (error.response.data.message === "Student not found") {
+          alert("Student not found");
+        } else if (
+          error.response.data.message === "Attendance data not found"
+        ) {
+          alert("Attendance data not found");
+        }
+      } else {
+        console.log(error);
+      }
     }
     setStudentId("");
     setIsStudentIdDisabled(false);
