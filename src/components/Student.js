@@ -7,10 +7,9 @@ import "bulma/css/bulma.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import "react-calendar/dist/Calendar.css";
-import { saveAs } from "file-saver";
-import Papa from "papaparse";
+// import { saveAs } from "file-saver";
+// import Papa from "papaparse";
 import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 import "jspdf-autotable";
 
 export const Student = () => {
@@ -81,7 +80,7 @@ export const Student = () => {
     setIsStudentIdDisabled(false);
     setIsDateDisabled(false);
   };
-  //download attendance report as excel sheet
+  //download attendance report as an excel sheet
   // const handleDownloadClick = () => {
   //   const headers = [
   //     "Student ID",
@@ -103,7 +102,7 @@ export const Student = () => {
   //   saveAs(blob, "Attendance_Report.csv");
   // };
 
-  //dowload repost as pdf format
+  //dowload repost as a pdf format
 
   const handleDownloadClick = () => {
     const headers = [
