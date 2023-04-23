@@ -17,6 +17,7 @@ export const Student = () => {
   const [studentDetails, setStudentDetails] = useState([]);
   const [isStudentIdDisabled, setIsStudentIdDisabled] = useState(false);
   const [isDateDisabled, setIsDateDisabled] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleFilterClick = async () => {
     try {
@@ -40,14 +41,15 @@ export const Student = () => {
         //console.log(attendanceDetails);
         setAttendanceDetails(attendanceDetails);
       }
+      setErrorMessage("");
     } catch (error) {
       if (error.response && error.response.status === 404) {
         if (error.response.data.message === "Student not found") {
-          alert("Student not found");
+          setErrorMessage("Student not found");
         } else if (
           error.response.data.message === "Attendance data not found"
         ) {
-          alert("Attendance data not found");
+          setErrorMessage("Attendance data not found");
         }
       } else {
         console.log(error);
@@ -177,6 +179,8 @@ export const Student = () => {
           </tbody>
         </table>
       </div>
+      <div className="err-msg">{errorMessage && <p>{errorMessage}</p>}</div>
+
       <Footer></Footer>
     </div>
   );

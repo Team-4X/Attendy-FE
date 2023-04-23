@@ -99,3 +99,7 @@ input.student-input::placeholder {
 .prohibited {
   cursor: not-allowed;
 }
+.err-msg{
+  color: red;
+  margin-top: 10px;
+}
