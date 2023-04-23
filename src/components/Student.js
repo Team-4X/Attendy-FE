@@ -9,6 +9,9 @@ import "@fortawesome/fontawesome-free/js/all.min.js";
 import "react-calendar/dist/Calendar.css";
 import { saveAs } from "file-saver";
 import Papa from "papaparse";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import "jspdf-autotable";
 
 export const Student = () => {
   const [studentId, setStudentId] = useState("");
@@ -78,7 +81,30 @@ export const Student = () => {
     setIsStudentIdDisabled(false);
     setIsDateDisabled(false);
   };
-  //download attendance report
+  //download attendance report as excel sheet
+  // const handleDownloadClick = () => {
+  //   const headers = [
+  //     "Student ID",
+  //     "Student Name",
+  //     "Class Name",
+  //     "Date",
+  //     "Attendance Status",
+  //   ];
+  //   const rows = attendanceDetails.map((attendance) => [
+  //     attendance.studentID,
+  //     attendance.studentname,
+  //     attendance.class,
+  //     attendance.date,
+  //     attendance.attendance,
+  //   ]);
+  //   const csvData = Papa.unparse([headers, ...rows]);
+
+  //   const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
+  //   saveAs(blob, "Attendance_Report.csv");
+  // };
+
+  //dowload repost as pdf format
+
   const handleDownloadClick = () => {
     const headers = [
       "Student ID",
@@ -94,10 +120,23 @@ export const Student = () => {
       attendance.date,
       attendance.attendance,
     ]);
-    const csvData = Papa.unparse([headers, ...rows]);
 
-    const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
-    saveAs(blob, "Attendance_Report.csv");
+    // Create a new jsPDF instance
+    const pdf = new jsPDF("p", "pt", "a4");
+
+    // Add the title
+    pdf.setFontSize(18);
+    pdf.text("Attendance Details", 40, 40);
+
+    // Add the table to the PDF document using the autoTable plugin
+    pdf.autoTable({
+      head: [headers],
+      body: rows,
+      startY: 60,
+      margin: { top: 60 },
+    });
+    // Save the pdf document
+    pdf.save("Attendance_Report.pdf");
   };
 
   return (
