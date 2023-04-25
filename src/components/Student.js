@@ -7,10 +7,9 @@ import "bulma/css/bulma.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import "react-calendar/dist/Calendar.css";
-// import { saveAs } from "file-saver";
-// import Papa from "papaparse";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { useSelector } from "react-redux";
 
 export const Student = () => {
   const [studentId, setStudentId] = useState("");
@@ -20,6 +19,7 @@ export const Student = () => {
   const [isStudentIdDisabled, setIsStudentIdDisabled] = useState(false);
   const [isDateDisabled, setIsDateDisabled] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  let loggedInAsAdmin = useSelector((state) => state.auth.isAuthenticated);
 
   const handleFilterClick = async () => {
     try {
@@ -185,10 +185,14 @@ export const Student = () => {
         </div>
 
         <div className="column">
-          <button className="button is-dark" onClick={handleDownloadClick}>
-            Download Report
-          </button>
+          {
+            loggedInAsAdmin &&
+            <button className="button is-dark" onClick={handleDownloadClick}>
+              Download Report
+            </button>
+          }
         </div>
+        
       </div>
       <div className="attedanceTable">
         <table className="table mt-5 is-bordered is-striped  is-narrow is-hoverable is-max-desktop">
