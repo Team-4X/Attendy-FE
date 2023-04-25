@@ -42,12 +42,13 @@ export const NavBar = () => {
                   </a>
                   :
                   <div>
-                    <Link to={"/auth/register"}>
-                      <span id="signup-button" className="has-text-dark">
-                        Sign up
-                      </span>
-                    </Link>
-                    <a class="button is-light mr-2">
+                    <a className="button is-light mr-2">
+                      <Link to={"/auth/register"} className="has-text-dark">
+                          <strong>Sign Up</strong>
+                      </Link>
+                    </a>
+
+                    <a className="button is-light mr-2">
                       <Link to={"/auth/login"} className="has-text-dark">
                         <strong>Log In</strong>
                       </Link>
