@@ -8,9 +8,11 @@ import { useState } from "react";
 export const MarkAttendance = () => {
 
   const [userValidated, setUserValidated] = useState(false);
+  const [isHidden, setIsHidden] = useState('is-hidden');
 
   const handleSignInForm = async (e) => {
     e.preventDefault();
+    setIsHidden('');
     const data = new FormData(e.currentTarget);
     const form = {
       id: data.get("staffID"),
@@ -30,7 +32,10 @@ export const MarkAttendance = () => {
     })
     .then(response => response.json())
     .then(data => {
-
+      
+      if (data) {
+        setIsHidden('is-hidden');
+      }
       setUserValidated(data);
 
       fetch(`${process.env.REACT_APP_API_URL}/attendance/markTeacherAttendance`, {
@@ -79,6 +84,9 @@ export const MarkAttendance = () => {
               <button className="button is-dark" type="submit">
                 Sign in
               </button>
+            </div>
+            <div className={`has-text-centered ${isHidden}`}>
+              <p className="has-text-danger">Invalid credentials</p>
             </div>
           </form>
         }

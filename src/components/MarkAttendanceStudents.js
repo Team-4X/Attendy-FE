@@ -50,7 +50,7 @@ export const MarkAttendanceStudents = () => {
                 students.map(student => (
                   <div className="columns m-3" key={student._id}>
                     <div className="column is-one-third">
-                      <span className="has-text-grey">{student.name}</span>
+                      <span className="has-text-grey">{student.studentname}</span>
                     </div>
                     <div className="column">
                       <span className="has-text-grey">{student.class}</span>
