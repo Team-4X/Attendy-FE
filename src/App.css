@@ -110,3 +110,19 @@ input.student-input::placeholder {
 .prohibited {
   cursor: not-allowed;
 }
+.err-msg{
+  color: red;
+  margin-top: 10px;
+}
+.tbody td {
+  text-align: center; /* or left/right, depending on your table */
+  vertical-align: middle; /* or top/bottom */
+  padding: 0.5rem; /* adjust this as needed */
+}
+.thead th {
+  text-align: center; /* or left/right, depending on your table */
+  vertical-align: middle; /* or top/bottom */
+  padding: 0.5rem; /* adjust this as needed */
+  background-color: #ccc; /* adjust the background color as needed */
+  color: #333; /* adjust the text color as needed */
+}

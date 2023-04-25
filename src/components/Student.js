@@ -7,8 +7,10 @@ import "bulma/css/bulma.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
 import "react-calendar/dist/Calendar.css";
-import { saveAs } from "file-saver";
-import Papa from "papaparse";
+// import { saveAs } from "file-saver";
+// import Papa from "papaparse";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 export const Student = () => {
   const [studentId, setStudentId] = useState("");
@@ -17,11 +19,12 @@ export const Student = () => {
   const [studentDetails, setStudentDetails] = useState([]);
   const [isStudentIdDisabled, setIsStudentIdDisabled] = useState(false);
   const [isDateDisabled, setIsDateDisabled] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleFilterClick = async () => {
     try {
       if (studentId !== "") {
-        console.log(studentId);
+        //console.log(studentId);
         const res = await axios.get(
           `http://localhost:4000/student/${studentId}`
         );
@@ -30,18 +33,29 @@ export const Student = () => {
         // console.log(studentDetails);
         setStudentDetails(studentDetails);
         const attendanceDetails = res.data;
-        console.log(attendanceDetails);
+        //console.log(attendanceDetails);
         setAttendanceDetails(attendanceDetails);
       } else if (date) {
         const response = await axios.get(
           `http://localhost:4000/find-AttendanceStudent/${date}`
         );
         const attendanceDetails = response.data;
-        console.log(attendanceDetails);
+        //console.log(attendanceDetails);
         setAttendanceDetails(attendanceDetails);
       }
+      setErrorMessage("");
     } catch (error) {
-      console.log(error);
+      if (error.response && error.response.status === 404) {
+        if (error.response.data.message === "Student not found") {
+          setErrorMessage("Student not found");
+        } else if (
+          error.response.data.message === "Attendance data not found"
+        ) {
+          setErrorMessage("Attendance data not found");
+        }
+      } else {
+        console.log(error);
+      }
     }
     setStudentId("");
     setIsStudentIdDisabled(false);
@@ -66,7 +80,30 @@ export const Student = () => {
     setIsStudentIdDisabled(false);
     setIsDateDisabled(false);
   };
-  //download attendance report
+  //download attendance report as an excel sheet
+  // const handleDownloadClick = () => {
+  //   const headers = [
+  //     "Student ID",
+  //     "Student Name",
+  //     "Class Name",
+  //     "Date",
+  //     "Attendance Status",
+  //   ];
+  //   const rows = attendanceDetails.map((attendance) => [
+  //     attendance.studentID,
+  //     attendance.studentname,
+  //     attendance.class,
+  //     attendance.date,
+  //     attendance.attendance,
+  //   ]);
+  //   const csvData = Papa.unparse([headers, ...rows]);
+
+  //   const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
+  //   saveAs(blob, "Attendance_Report.csv");
+  // };
+
+  //dowload repost as a pdf format
+
   const handleDownloadClick = () => {
     const headers = [
       "Student ID",
@@ -82,10 +119,23 @@ export const Student = () => {
       attendance.date,
       attendance.attendance,
     ]);
-    const csvData = Papa.unparse([headers, ...rows]);
 
-    const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
-    saveAs(blob, "Attendance_Report.csv");
+    // Create a new jsPDF instance
+    const pdf = new jsPDF("p", "pt", "a4");
+
+    // Add the title
+    pdf.setFontSize(18);
+    pdf.text("Attendance Details", 40, 40);
+
+    // Add the table to the PDF document using the autoTable plugin
+    pdf.autoTable({
+      head: [headers],
+      body: rows,
+      startY: 60,
+      margin: { top: 60 },
+    });
+    // Save the pdf document
+    pdf.save("Attendance_Report.pdf");
   };
 
   return (
@@ -167,6 +217,8 @@ export const Student = () => {
           </tbody>
         </table>
       </div>
+      <div className="err-msg">{errorMessage && <p>{errorMessage}</p>}</div>
+
       <Footer></Footer>
     </div>
   );
