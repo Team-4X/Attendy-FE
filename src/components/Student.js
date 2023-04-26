@@ -25,9 +25,6 @@ export const Student = () => {
   const [formHidden, setFormHidden] = useState(true);
   const [showError, setShowError] = useState("is-hidden");
 
-  console.log(loggedInAsAdmin);
-  console.log(teacherLoggedIn);
-
   const showLoginForm = () => {
     setFormHidden(false);
   }
