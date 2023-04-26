@@ -25,6 +25,9 @@ export const Student = () => {
   const [formHidden, setFormHidden] = useState(true);
   const [showError, setShowError] = useState("is-hidden");
 
+  console.log(loggedInAsAdmin);
+  console.log(teacherLoggedIn);
+
   const showLoginForm = () => {
     setFormHidden(false);
   }
@@ -54,10 +57,10 @@ export const Student = () => {
     .then(response => response.json())
     .then(data => {
 
-      setTeacherLoggedIn(data);
       if (!data) {
         setShowError("");
       } else {
+        setTeacherLoggedIn(data);
         setFormHidden(true);
         setShowError("is-hidden");
       }
@@ -232,7 +235,7 @@ export const Student = () => {
 
         <div className="column">
           {
-            loggedInAsAdmin || teacherLoggedIn &&
+            (teacherLoggedIn || loggedInAsAdmin) &&
             <button className="button is-dark" onClick={handleDownloadClick}>
               Download Report
             </button>
