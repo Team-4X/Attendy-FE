@@ -17,7 +17,7 @@ export const StudentManage = () => {
     const tabs = ['Add a student', 'Show student', 'Find a student '];
   
     const fetchStudent = async () => {
-      await fetch(`${process.env.REACT_APP_API_URL}/Student/getStudent`)
+      await fetch(`${process.env.REACT_APP_API_URL}/students/getStudent`)
       .then(response => response.json())
       .then(data => setStudent(data))
       .catch(err => console.error(err));    
@@ -26,7 +26,6 @@ export const StudentManage = () => {
     useEffect(() => {
         try {
           fetchStudent();
-          console.log("hello");
         } catch (err) {
           console.log(err);
         }
@@ -38,7 +37,7 @@ export const StudentManage = () => {
 
     if (!isDeleting && window.confirm("Do you want to delete this student from the database?")) {
       setIsDeleting(true);
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/student/delStudent`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/students/delStudent`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -107,7 +106,7 @@ export const StudentManage = () => {
     }
     clearEditForm();
 
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/Student/editStudent`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/students/editStudent`, {
       method: "PUT",
       body: JSON.stringify(form),
       headers: {
@@ -157,7 +156,7 @@ export const StudentManage = () => {
       };
       console.log(form);
       clearInputs();
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/student/addStudent`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/students/addStudent`, {
         method: "POST",
         body: JSON.stringify(form),
         headers: {
@@ -198,7 +197,7 @@ export const StudentManage = () => {
 
     clearFindInputs();
 
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/Student/findStudent`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/students/findStudent`, {
       method: "POST",
       body: JSON.stringify(form),
       headers: {
