@@ -31,7 +31,7 @@ export const NavBar = () => {
     let isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
         
     return (
-    <nav class="navbar is-light is fixed-top mt-2 mx-2 level">
+    <nav className="navbar is-light is fixed-top mt-2 mx-2 level">
       <div className="navbar-start is-hidden-mobile is-hidden-desktop is-flex-touch">
 
           <div className="buttons">
@@ -85,7 +85,7 @@ export const NavBar = () => {
                   <strong>Logout</strong>
                 </a>
                 :
-                <span class="button is-light mr-2">
+                <span className="button is-light mr-2">
                   <Link to={"/auth/login"} className="has-text-dark">
                     <strong>Log In</strong>
                   </Link>
@@ -149,7 +149,7 @@ export const NavBar = () => {
                   <strong>Logout</strong>
                 </a>
                 :
-                <div class="mr-2">
+                <div className="mr-2">
                   <a className="button is-light">
                     <Link to={"/auth/login"} className="has-text-dark">
                       <strong>Log In</strong>

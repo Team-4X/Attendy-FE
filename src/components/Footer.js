@@ -4,7 +4,7 @@ import "./assets/Footer.css";
 
 export const Footer = () => {
   return (
-    <footer class="footer mx-2 mt-5">
+    <footer className="footer mx-2 mt-5">
 
       <div id="footer-cols">
         <div className="columns">
