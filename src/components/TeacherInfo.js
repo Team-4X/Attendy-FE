@@ -17,12 +17,8 @@ export const TeacherInfo = () => {
         axios
         .get(`http://localhost:4000/staff-attendance/${teacherId}`)
         .then((res) => {
-          // handle successful response
-          console.log(res.data);
-  
           const attendanceDetails = res.data;
           setAttendanceDetails(attendanceDetails);
-          console.log(attendanceDetails);
         })
         .catch((error) => {
           // handle error
