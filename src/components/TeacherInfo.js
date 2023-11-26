@@ -2,7 +2,7 @@ import { NavBar } from "./NavBar"
 import { Footer } from "./Footer";
 import axios from "axios";
 import "bulma/css/bulma.min.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../App.css";
 
 export const TeacherInfo = () => {
@@ -15,6 +15,20 @@ export const TeacherInfo = () => {
   const [isTeacherIdDisabled, setIsTeacherIdDisabled] = useState(false);
   const [isDateDisabled, setIsDateDisabled] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const getAttendanceByDate = async (date) => {
+    const response = await axios.get(
+      `http://localhost:4000/find-StaffByDate/${date}`
+    );
+    const attendanceDetails = response.data;
+    setAttendanceDetails(attendanceDetails);
+  }
+
+  useEffect(() => {
+    const currentDate = new Date().toLocaleDateString('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    setDate(currentDate);
+    getAttendanceByDate(currentDate);
+  }, [])
 
   const handleFilterClick = async () => {
     try {
