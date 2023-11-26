@@ -5,7 +5,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { useDispatch } from "react-redux";
-import {setUser} from "../store/auth.js";
+import { setUser } from "../store/auth.js";
+import "../App.css";
 
 export const Login = () => {
 
@@ -34,9 +35,9 @@ export const Login = () => {
       },
     });
 
-    const {token, user} = await res.json();
+    const { token, user } = await res.json();
 
-    if(res.ok) {
+    if (res.ok) {
       Cookies.set('token', token);
       dispatch(setUser(user));
       navigate('/');
@@ -65,21 +66,21 @@ export const Login = () => {
 
             <form onSubmit={handleSubmit}>
               <input
-                className="input mb-3 "
+                className="mb-3 "
                 type="text"
                 placeholder="User ID "
                 name="userID"
               ></input>
               <br></br>
               <input
-                className="input mb-3 "
+                className="mb-3 "
                 type="password"
                 placeholder="Password"
                 name="password"
               ></input>
               <br></br>
 
-              <p className="has-text-danger mb-1">{ errorMessage }</p>
+              <p className="has-text-danger mb-1">{errorMessage}</p>
 
               <button type="submit" className="button is-dark">
                 Login
