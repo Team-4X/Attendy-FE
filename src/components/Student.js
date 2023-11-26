@@ -177,11 +177,11 @@ export const Student = () => {
       </h1>
 
       <div className="columns">
-        <div className="column">
+        <div className="column ml-5">
           <div className="field has-addons">
             <div className="control is-expanded">
               <input
-                className={`student-input ${
+                className={`${
                   isStudentIdDisabled ? "prohibited" : ""
                 }`}
                 type="text"
@@ -200,7 +200,7 @@ export const Student = () => {
           </div>
 
           <input
-            className={`student-input ${isDateDisabled ? "prohibited" : ""}`}
+            className={`${isDateDisabled ? "prohibited" : ""}`}
             value={date}
             name="date"
             onChange={handleInputChange}
