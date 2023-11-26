@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { NavBar } from "./NavBar";
 import { Footer } from "./Footer";
@@ -70,23 +70,17 @@ export const Student = () => {
   const handleFilterClick = async () => {
     try {
       if (studentId !== "") {
-        //console.log(studentId);
         const res = await axios.get(
           `http://localhost:4000/student/${studentId}`
         );
-        // console.log(res.data);
-        // const studentDetails = res.data[0];
-        // console.log(studentDetails);
         setStudentDetails(studentDetails);
         const attendanceDetails = res.data;
-        //console.log(attendanceDetails);
         setAttendanceDetails(attendanceDetails);
       } else if (date) {
         const response = await axios.get(
           `http://localhost:4000/find-AttendanceStudent/${date}`
         );
         const attendanceDetails = response.data;
-        //console.log(attendanceDetails);
         setAttendanceDetails(attendanceDetails);
       }
       setErrorMessage("");
@@ -100,7 +94,7 @@ export const Student = () => {
           setErrorMessage("Attendance data not found");
         }
       } else {
-        console.log(error);
+        console.error(error);
       }
     }
     setStudentId("");
@@ -126,29 +120,6 @@ export const Student = () => {
     setIsStudentIdDisabled(false);
     setIsDateDisabled(false);
   };
-  //download attendance report as an excel sheet
-  // const handleDownloadClick = () => {
-  //   const headers = [
-  //     "Student ID",
-  //     "Student Name",
-  //     "Class Name",
-  //     "Date",
-  //     "Attendance Status",
-  //   ];
-  //   const rows = attendanceDetails.map((attendance) => [
-  //     attendance.studentID,
-  //     attendance.studentname,
-  //     attendance.class,
-  //     attendance.date,
-  //     attendance.attendance,
-  //   ]);
-  //   const csvData = Papa.unparse([headers, ...rows]);
-
-  //   const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
-  //   saveAs(blob, "Attendance_Report.csv");
-  // };
-
-  //dowload repost as a pdf format
 
   const handleDownloadClick = () => {
     const headers = [
