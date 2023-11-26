@@ -21,17 +21,13 @@ export const TeacherInfo = () => {
           setAttendanceDetails(attendanceDetails);
         })
         .catch((error) => {
-          // handle error
-          console.log(error);
+          console.error(error);
         });
     };
 
     const handleInputChange1 = (event) => {
         setTeachersId(event.target.value); 
     };
-    /*const handleInputChange2 = (event) => {
-        setTeachersName(event.target.value);
-    }*/
 
     return (
         <div>

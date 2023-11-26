@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Card = (props) => {
   const url = '/' + props.link;
   const [title, setTitle] = useState(props.title);
-  const [attendanceCount, setAttendanceCount] = useState(props.attendanceCount);
+  const attendanceCount = props.attendanceCount;
   const [image, setImage] = useState(props.image);
   const [link, setLink] = useState(url);
 
