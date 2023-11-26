@@ -67,6 +67,20 @@ export const Student = () => {
 
   };
 
+  const getAttendanceByDate = async (date) => {
+    const response = await axios.get(
+      `http://localhost:4000/find-AttendanceStudent/${date}`
+    );
+    const attendanceDetails = response.data;
+    setAttendanceDetails(attendanceDetails);
+  }
+
+  useEffect(() => {
+    const currentDate = new Date().toLocaleDateString('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    setDate(currentDate);
+    getAttendanceByDate(currentDate);
+  }, [])
+
   const handleFilterClick = async () => {
     try {
       if (studentId !== "") {
