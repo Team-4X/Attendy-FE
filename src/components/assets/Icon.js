@@ -37,7 +37,6 @@ export const Icon = (props) => {
             },
         })
         .then(response => response.json())
-        .then(data => console.log(data))
         .catch(err => console.error(err));
     }
 
@@ -46,15 +45,12 @@ export const Icon = (props) => {
         setPresentShown(true);
         setAbsentShown(false);
         sendRequest('present');
-        console.log(`${student.name} is Present!`);
-
     }
     const handleMarkAbsent = (e) => {
         e.preventDefault();
         setAbsentShown(true);
         setPresentShown(false);
         sendRequest('absent');
-        console.log(`${student.name} is absent!`);
     }
 
     return (

@@ -13,7 +13,6 @@ export const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
   
   const showMenus = () => {
-    console.log("hamburger clicked!");
     setShowMenu(!showMenu);
   };
 

@@ -44,7 +44,6 @@ export const StudentManage = () => {
         },
         body: JSON.stringify(item),
       });
-      console.log("student deleted!");
 
       if (!response.ok) {
         throw new Error(`Failed to fetch data!`);
@@ -154,7 +153,6 @@ export const StudentManage = () => {
         name: data.get("name"),
         class: data.get("class")
       };
-      console.log(form);
       clearInputs();
       const res = await fetch(`${process.env.REACT_APP_API_URL}/students/addStudent`, {
         method: "POST",

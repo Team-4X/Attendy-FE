@@ -45,12 +45,10 @@ export const StaffManage = () => {
         },
         body: JSON.stringify(item),
       });
-      console.log("teacher deleted!");
 
       if (!response.ok) {
         throw new Error(`Failed to fetch data!`);
       } else {
-        console.log(response);
         fetchTeachers();
       }
     }
@@ -161,7 +159,6 @@ export const StaffManage = () => {
         password: data.get("password"),
         name: data.get("name")
       };
-      console.log(form);
       clearInputs();
       const res = await fetch(`${process.env.REACT_APP_API_URL}/staff/addTeachers`, {
         method: "POST",
@@ -215,7 +212,6 @@ export const StaffManage = () => {
     .then(data => setSearchedTeacher(data))
     .catch(error => console.error(error));
 
-    console.log(searchedTeacher.data[0]);
     setSearchFormVisibility(false);
     setResultBoxVisibility(true);
   }

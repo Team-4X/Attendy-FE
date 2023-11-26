@@ -9,7 +9,6 @@ export const DropDown = (props) => {
 
   const handleDropDownClick = (e) => {
     e.preventDefault();
-    // console.log(e.target.text);
     props.onData(e.target.text);
     setIsActive(!isActive);
     if (isActive) setBtnName(e.target.text);
