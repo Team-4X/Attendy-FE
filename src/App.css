@@ -154,6 +154,7 @@ input[type=text] {
   height: 40px;
   padding: 14px 20px;
   margin: 8px 0;
+  border: 1px solid gray;
   border-radius: 4px;
   width: 325px
 }
@@ -162,6 +163,7 @@ input[type=date] {
   height: 40px;
   padding: 14px 20px;
   margin: 8px 0;
+  border: 1px solid gray;
   border-radius: 4px;
   width: 325px
 }
