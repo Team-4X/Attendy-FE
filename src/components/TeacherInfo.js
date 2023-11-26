@@ -7,60 +7,78 @@ import "../App.css";
 
 export const TeacherInfo = () => {
 
-    const [teacherId, setTeachersId] = useState("");
-    const [teacherName, setTeachersName] = useState("");
-    const [date, setDate] = useState([]);
-    const [attendanceStatus, setAttendanceStataus] = useState("");
-    const [attendanceDetails, setAttendanceDetails] = useState([]);
+  const [teacherId, setTeacherId] = useState("");
+  const [teacherName, setTeachersName] = useState("");
+  const [date, setDate] = useState([]);
+  const [attendanceStatus, setAttendanceStataus] = useState("");
+  const [attendanceDetails, setAttendanceDetails] = useState([]);
+  const [isTeacherIdDisabled, setIsTeacherIdDisabled] = useState(false);
+  const [isDateDisabled, setIsDateDisabled] = useState(false);
 
-    const handleFilterClick = () => {
-        axios
-        .get(`http://localhost:4000/staff-attendance/${teacherId}`)
-        .then((res) => {
-          const attendanceDetails = res.data;
-          setAttendanceDetails(attendanceDetails);
-        })
-        .catch((error) => {
-          // handle error
-          console.log(error);
-        });
-    };
+  const handleFilterClick = () => {
+    axios
+      .get(`http://localhost:4000/staff-attendance/${teacherId}`)
+      .then((res) => {
+        const attendanceDetails = res.data;
+        setAttendanceDetails(attendanceDetails);
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      });
+  };
 
-    const handleInputChange1 = (event) => {
-        setTeachersId(event.target.value); 
-    };
-    /*const handleInputChange2 = (event) => {
-        setTeachersName(event.target.value);
-    }*/
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
 
-    return (
-        <div>
-            <NavBar></NavBar>
-            <h1 className="subtitle is-2 has-text-centered mt-5">
-                Attendance of Teachers
-            </h1>
+    if (name === "date") {
+      setDate(value);
+      setIsTeacherIdDisabled(!!value);
+    } else if (name === "teacherId") {
+      setTeacherId(value);
+      setIsDateDisabled(!!value);
+    }
+  };
 
-            <div className="columns">
-                <div className="column">
-                    <input
-                        className="input"
-                        type="text"
-                        placeholder="Enter Teacher Id"
-                        value={teacherId}
-                        onChange={handleInputChange1}
-                    />
-                </div>
-                <div className="column">
-                    <button className="button is-dark" onClick={handleFilterClick}>
-                        Filter
-                    </button>
-                </div>
+  return (
+    <div>
+      <NavBar></NavBar>
+      <h1 className="subtitle is-2 has-text-centered mt-5">
+        Attendance of Teachers
+      </h1>
 
-                <div className="column">
-                    <button className="button is-dark">Download Report</button>
-                </div>
-            </div>
-            <div className="attedanceTable">
+      <div className="columns">
+        <div className="column">
+          <input
+            className="ml-5"
+            type="text"
+            placeholder="Enter Teacher Id"
+            value={teacherId}
+            name="teacherId"
+            onChange={handleInputChange}
+          />
+          <div className="">
+            <input
+              className="ml-5"
+              type="date"
+              name="date"
+              value={date}
+              onChange={handleInputChange}
+            />
+          </div>
+
+        </div>
+        <div className="column">
+          <button className="button is-dark" onClick={handleFilterClick}>
+            Filter
+          </button>
+        </div>
+
+        <div className="column">
+          <button className="button is-dark">Download Report</button>
+        </div>
+      </div>
+      <div className="attedanceTable">
         <table className="table mt-5 is-bordered is-striped  is-narrow is-hoverable is-max-desktop">
           <thead>
             <tr>
@@ -82,7 +100,7 @@ export const TeacherInfo = () => {
           </tbody>
         </table>
       </div>
-            <Footer></Footer>
-        </div>
-    )
+      <Footer></Footer>
+    </div>
+  )
 }
