@@ -40,7 +40,6 @@ export const TeacherInfo = () => {
             setAttendanceDetails(attendanceDetails);
           })
           .catch((error) => {
-            // handle error
             console.log(error);
           });
 

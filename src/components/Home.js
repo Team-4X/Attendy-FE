@@ -12,20 +12,31 @@ import { Heading } from "./Heading";
 import studentImg from "../assets/student.jpg";
 import staffImg from "../assets/staff.jpg";
 import workingImg from "../assets/working-together.jpg";
+import axios from "axios";
 
 
 
 export const Home = () => {
-
-  useEffect(() => {
-    getToken();
-  }, []);
-
+  
   const [token, setToken] = useState('null');
+  const [studentAttendanceCount, setStudentAttendanceCount] = useState(0);
+  const [staffAttendanceCount, setStuffAttendanceCount] = useState(0);
+
+  const getStudentAndStaffCountsToday = async() => {
+    await axios.get(`${process.env.REACT_APP_API_URL}/attendance/getAttendanceCounts`).then((response) => {
+      setStudentAttendanceCount(response.data.studentCount);
+      setStuffAttendanceCount(response.data.staffCount);
+    })
+  }
 
   const getToken = () => {
     setToken(Cookies.get('token'));
   }
+
+  useEffect(() => {
+    getToken();
+    getStudentAndStaffCountsToday();
+  }, []);
   return (
     <>
       <NavBar></NavBar>
@@ -44,13 +55,11 @@ export const Home = () => {
           <SideBar></SideBar>
         </div>
         <div className="column">
-          {/* cards should be here */}
-
           <div className="columns mr-1">
             <div className="column">
               <Card
                 title="Students"
-                attendanceCount="300"
+                attendanceCount={studentAttendanceCount}
                 image={workingImg}
                 link="student"
               ></Card>
@@ -58,7 +67,7 @@ export const Home = () => {
             <div className="column">
               <Card
                 title="Staff Members"
-                attendanceCount="20"
+                attendanceCount={staffAttendanceCount}
                 image={staffImg}
                 link="staff"
               ></Card>
@@ -70,7 +79,6 @@ export const Home = () => {
               <Card
                 image={workingImg}
                 title="Manage Staff"
-                attendanceCount="200"
                 link="staff-manage"
               ></Card>
             </div>
@@ -78,7 +86,6 @@ export const Home = () => {
               <Card
                 image={staffImg}
                 title="Manage Student"
-                attendanceCount="33"
                 link="student-manage"
               ></Card>
             </div>
