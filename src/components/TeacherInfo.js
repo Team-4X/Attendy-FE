@@ -14,18 +14,48 @@ export const TeacherInfo = () => {
   const [attendanceDetails, setAttendanceDetails] = useState([]);
   const [isTeacherIdDisabled, setIsTeacherIdDisabled] = useState(false);
   const [isDateDisabled, setIsDateDisabled] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleFilterClick = () => {
-    axios
-      .get(`http://localhost:4000/staff-attendance/${teacherId}`)
-      .then((res) => {
-        const attendanceDetails = res.data;
+  const handleFilterClick = async () => {
+    try {
+      if (teacherId !== "") {
+        axios
+          .get(`http://localhost:4000/staff-attendance/${teacherId}`)
+          .then((res) => {
+            const attendanceDetails = res.data;
+            setAttendanceDetails(attendanceDetails);
+          })
+          .catch((error) => {
+            // handle error
+            console.log(error);
+          });
+
+      } else if (date) {
+        const response = await axios.get(
+          `http://localhost:4000/find-StaffByDate/${date}`
+        );
+        const attendanceDetails = response.data;
         setAttendanceDetails(attendanceDetails);
-      })
-      .catch((error) => {
-        // handle error
+      }
+      setErrorMessage("");
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        if (error.response.data.message === "Teacher not found") {
+          setErrorMessage("Teacher not found");
+        } else if (
+          error.response.data.message === "Attendance data not found"
+        ) {
+          setErrorMessage("Attendance data not found");
+        }
+      } else {
         console.log(error);
-      });
+      }
+    }
+    setTeacherId("");
+    setIsDateDisabled(false);
+    setIsTeacherIdDisabled(false);
+    setDate("");
+
   };
 
   const handleInputChange = (event) => {
@@ -100,6 +130,7 @@ export const TeacherInfo = () => {
           </tbody>
         </table>
       </div>
+      <div className="err-msg">{errorMessage && <p>{errorMessage}</p>}</div>
       <Footer></Footer>
     </div>
   )
