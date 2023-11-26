@@ -28,48 +28,55 @@
   color: #002c3a;
 }
 
-.student-input{
+.student-input {
   text-align: left;
   margin-left: 15px;
 }
-.attedanceTable{ 
+
+.attedanceTable {
   display: flex;
   justify-content: center;
   align-items: center;
   /* height: 100vh; */
 }
-.userId{
-  margin-top: 5px;  
+
+.userId {
+  margin-top: 5px;
   margin-bottom: 5px;
   cursor: pointer;
-  padding:5px;
-  width:245px;
+  padding: 5px;
+  width: 245px;
   align-items: center;
   margin-left: 85px;
 }
-.userId:hover{
+
+.userId:hover {
   background-color: #D9E3F0;
- 
+
 
 }
+
 .calendar-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin-top: 5px;;
+  margin-top: 5px;
+  ;
 }
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
-.student-input{
+
+.student-input {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
@@ -78,24 +85,27 @@
   width: 80%;
   box-sizing: border-box;
   padding-right: 16px;
-  
+
 }
+
 input.student-input::placeholder {
   color: black;
 }
+
 .student-input:focus {
   text-align: center !important;
 }
 
-.attedanceTable{
-  
+.attedanceTable {
+
   display: flex;
   justify-content: center;
   align-items: center;
   /* height: 100vh; */
 
 }
-.input-date{
+
+.input-date {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
@@ -104,25 +114,54 @@ input.student-input::placeholder {
   width: 80%;
   box-sizing: border-box;
 }
-.clear-input{
+
+.clear-input {
   background-color: aqua;
 }
+
 .prohibited {
   cursor: not-allowed;
 }
-.err-msg{
+
+.err-msg {
   color: red;
   margin-top: 10px;
 }
+
 .tbody td {
-  text-align: center; /* or left/right, depending on your table */
-  vertical-align: middle; /* or top/bottom */
-  padding: 0.5rem; /* adjust this as needed */
+  text-align: center;
+  /* or left/right, depending on your table */
+  vertical-align: middle;
+  /* or top/bottom */
+  padding: 0.5rem;
+  /* adjust this as needed */
 }
+
 .thead th {
-  text-align: center; /* or left/right, depending on your table */
-  vertical-align: middle; /* or top/bottom */
-  padding: 0.5rem; /* adjust this as needed */
-  background-color: #ccc; /* adjust the background color as needed */
-  color: #333; /* adjust the text color as needed */
+  text-align: center;
+  /* or left/right, depending on your table */
+  vertical-align: middle;
+  /* or top/bottom */
+  padding: 0.5rem;
+  /* adjust this as needed */
+  background-color: #ccc;
+  /* adjust the background color as needed */
+  color: #333;
+  /* adjust the text color as needed */
+}
+
+input[type=text] {
+  height: 40px;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border-radius: 4px;
+  width: 325px
+}
+
+input[type=date] {
+  height: 40px;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border-radius: 4px;
+  width: 325px
 }
