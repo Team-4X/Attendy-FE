@@ -2,8 +2,11 @@ import { NavBar } from "./NavBar"
 import { Footer } from "./Footer";
 import axios from "axios";
 import "bulma/css/bulma.min.css";
+import "react-calendar/dist/Calendar.css";
 import { useState, useEffect } from "react";
 import "../App.css";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 export const TeacherInfo = () => {
 
@@ -83,6 +86,43 @@ export const TeacherInfo = () => {
     }
   };
 
+  const handleClearInput = () => {
+    setTeacherId("");
+    setDate("");
+    setIsTeacherIdDisabled(false);
+    setIsDateDisabled(false);
+  };
+
+  const handleDownloadClick = () => {
+    const headers = [
+      "Teacher Name",
+      "Date",
+      "Attendance Status"
+    ];
+    const rows = attendanceDetails.map((attendance) => [
+      attendance.teacherName,
+      attendance.date,
+      attendance.attendance
+    ]);
+
+    // Create a new jsPDF instance
+    const pdf = new jsPDF("p", "pt", "a4");
+
+    // Add the title
+    pdf.setFontSize(18);
+    pdf.text("Attendance Details", 40, 40);
+
+    // Add the table to the PDF document using the autoTable plugin
+    pdf.autoTable({
+      head: [headers],
+      body: rows,
+      startY: 60,
+      margin: { top: 60 },
+    });
+    // Save the pdf document
+    pdf.save("Attendance_Report.pdf");
+  };
+
   return (
     <div>
       <NavBar></NavBar>
@@ -118,7 +158,7 @@ export const TeacherInfo = () => {
         </div>
 
         <div className="column">
-          <button className="button is-dark">Download Report</button>
+          <button className="button is-dark" onClick={handleDownloadClick}>Download Report</button>
         </div>
       </div>
       <div className="attedanceTable">
