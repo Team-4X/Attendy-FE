@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { DropDown } from "./assets/DropDown";
 import { Icon } from "./assets/Icon";
-import { faX, faCheck } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const MarkAttendanceStudents = () => {
   const [classes, setClasses] = useState(["7A", "2B"]);
