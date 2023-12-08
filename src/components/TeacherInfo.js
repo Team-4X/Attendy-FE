@@ -1,19 +1,20 @@
 import { NavBar } from "./NavBar"
 import { Footer } from "./Footer";
-import axios from "axios";
-import "bulma/css/bulma.min.css";
+import axios from "axios";  //Axios for HTTP requests to fetch attendance details
+import "bulma/css/bulma.min.css"; //Bulma CSS for styling
 import "react-calendar/dist/Calendar.css";
 import { useState, useEffect } from "react";
 import "../App.css";
-import jsPDF from "jspdf";
+import jsPDF from "jspdf";  //Generate a PDF report and allow the user to download
 import "jspdf-autotable";
-import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";  //To access authentication status from the Redux store
 import teacherImg from "./assets/teacher-face.png";
 
+//Initialize State variables
 export const TeacherInfo = () => {
 
   const [teacherId, setTeacherId] = useState("");
-  const [teacherName, setTeachersName] = useState("");
+  const [teacherName, setTeacherName] = useState("");
   const [date, setDate] = useState([]);
   const [attendanceStatus, setAttendanceStataus] = useState("");
   const [attendanceDetails, setAttendanceDetails] = useState([]);
@@ -25,6 +26,7 @@ export const TeacherInfo = () => {
   const [formHidden, setFormHidden] = useState(true);
   const [showError, setShowError] = useState("is-hidden");
 
+  //Event handling
   const showLoginForm = () => {
     setFormHidden(false);
   }
@@ -34,16 +36,14 @@ export const TeacherInfo = () => {
 
     setShowError("is-hidden");
 
+    //Extract the values for "staffID" and "password" from the form
     const data = new FormData(e.currentTarget);
     const form = {
       id: data.get("staffID"),
       password: data.get("password")
     };
 
-    const teacherVals = {
-      id: data.get("staffID")
-    }
-
+    //POST requests are used to send data to the server for processing and may modify the server's state
     await fetch(`${process.env.REACT_APP_API_URL}/staff/loginTeacher`, {
       method: "POST",
       body: JSON.stringify(form),
@@ -63,6 +63,7 @@ export const TeacherInfo = () => {
       }
 
     })
+    //Error handling
     .catch(error => console.error(error));
 
   };
@@ -70,7 +71,7 @@ export const TeacherInfo = () => {
   const getAttendanceByDate = async (date) => {
     const response = await axios.get(
       `http://localhost:4000/find-StaffByDate/${date}`
-    );
+    );  //Uses the Axios library to make a GET request
     const attendanceDetails = response.data;
     setAttendanceDetails(attendanceDetails);
   }
@@ -122,6 +123,7 @@ export const TeacherInfo = () => {
 
   };
 
+  //Handle input changes in form
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
@@ -133,7 +135,7 @@ export const TeacherInfo = () => {
       setIsDateDisabled(!!value);
     }
   };
-
+  //Reset the form
   const handleClearInput = () => {
     setTeacherId("");
     setDate("");
