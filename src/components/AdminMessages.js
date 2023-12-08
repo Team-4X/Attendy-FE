@@ -29,7 +29,7 @@ export const AdminMessages = () => {
             <div className="container">
 
             {
-                messages?.map(item => (
+                messages?.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1).map(item => (
                     <div id={item._id} className="has-background-grey-lighter mb-3 mx-3 box">
                         
                         <a href={`mailto:${item.email}`} className="is-italic has-text-dark">{item.email}</a>

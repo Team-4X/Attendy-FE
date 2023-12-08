@@ -167,3 +167,12 @@ input[type=date] {
   border-radius: 4px;
   width: 325px
 }
+
+input[type=password] {
+  height: 40px;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid gray;
+  border-radius: 4px;
+  width: 325px
+}
