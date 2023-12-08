@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DropDown } from "./assets/DropDown";
 import { Icon } from "./assets/Icon";
-import { faX, faCheck } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const MarkAttendanceStudents = () => {
-  const classes = ["7A", "2B"];
+  const [classes, setClasses] = useState(["7A", "2B"]);
   const [selectedVal, setSelectedVal] = useState();
   const [students, setStudents] = useState();
 
@@ -15,6 +13,16 @@ export const MarkAttendanceStudents = () => {
     if (e) setSelectedVal(e);
   }
 
+  useEffect(() => {
+    getClassList();
+  }, [])
+
+  const getClassList = async () => {
+    await fetch(`${process.env.REACT_APP_API_URL}/attendance/getClassList`)
+    .then(response => response.json())
+    .then(data => setClasses(data))
+    .catch(err => console.error(err));
+  }
   const handleSearch = async () => {
     await fetch(`${process.env.REACT_APP_API_URL}/attendance/getClass`, {
       method: "POST",
@@ -26,7 +34,6 @@ export const MarkAttendanceStudents = () => {
     .then(response => response.json())
     .then(data => setStudents(data))
     .catch(err => console.error(err));
-
   }
 
 
@@ -39,6 +46,7 @@ export const MarkAttendanceStudents = () => {
         <div className="columns">
           <div className="column">
 
+            {console.log('classes :', classes)}
             <DropDown items={classes} btnName="Select Class" onData={getSelectedVal}/>
             <br/>
             <button className="button is-info mb-4" onClick={handleSearch}>Search</button>
